@@ -1,0 +1,90 @@
+
+@Test763 @milestone4
+Feature: Validate that Hotline Worker and Supervisor is able to view the report data is showing as per filters and default order
+
+@v1ProjectT763
+Scenario:  CARESV1-T763_815 Verify that Hotline Worker and Supervisor is able to view the report data is showing as per filters and default order
+	Given Application is in Login Page
+	When i logged in as '<User>' for V1 application 
+#	When i logged in as 'SupervisorContraCosta' for V1 application 
+	And i wait for 5 seconds
+	And i click 'Reports' link
+	And i wait for 3 seconds
+	And i click 'All Reports' link
+	And i wait for 3 seconds
+	And i search for the value 'Call Back Request Respons'
+	And i wait for 3 seconds
+	And i click 'Call Back Request Response Times' link
+	And i wait for 3 seconds
+	And i switch to iframe
+	And i wait for 5 seconds
+	And i verify 'Duration of time to successfully return a call for screenings that require a call back' text is present on page
+	And i scroll to Down by 1200 pixels	
+	And i verify 'Call Date/Time' text is present on page
+	And i verify 'Screening ID' text is present on page
+	And i verify 'Screening Name' text is present on page
+	And i verify 'County Assigned to Screening' text is present on page
+	And i verify 'Caller Type' text is present on page
+	And i verify 'Call Back Date/Time' text is present on page
+	And i verify 'Duration Between Calls' text is present on page
+	And i verify 'Screening: Owner Name' text is present on page
+	And i verify 'Approval Supervisor' text is present on page
+	And i verify 'Call Back Staff Person' text is present on page
+#	And i wait for 10 seconds
+#	And i switch to main frame
+#	And i wait for 5 seconds
+#	And i switch to frame at index 1
+	And i move to element
+	And i click 'Duration Between Calls' button
+	And i wait for 5 seconds
+	And i click 'Duration Between Calls' button
+	And i wait for 5 seconds	
+	And i click 'Screening ID' button
+	And i wait for 5 seconds
+	And i click 'Screening ID' button
+	And i wait for 5 seconds	
+	And i click 'Screening Name' button
+	And i wait for 5 seconds
+	And i click 'Screening Name' button
+	And i wait for 5 seconds	
+	And i click 'County Assigned to Screening' button
+	And i wait for 5 seconds
+	And i click 'County Assigned to Screening' button
+	And i wait for 5 seconds	
+	And i click 'Caller Type' button
+	And i wait for 5 seconds
+	And i click 'Caller Type' button
+	And i wait for 5 seconds	
+	And i click 'Call Back Date/Time' button
+	And i wait for 5 seconds
+	And i click 'Call Back Date/Time' button
+	And i wait for 5 seconds	
+	And i click 'Screening: Owner Name' button
+	And i wait for 5 seconds
+	And i click 'Screening: Owner Name' button
+	And i wait for 5 seconds
+	And i click 'Approval Supervisor' button
+	And i wait for 5 seconds
+	And i click 'Approval Supervisor' button
+	And i wait for 5 seconds	
+	And i click 'Call Back Staff Person' button
+	And i wait for 5 seconds
+	And i click 'Call Back Staff Person' button
+	And i wait for 5 seconds	
+	And i verify 'Total Records' text is present on page
+	And i verify '1 Day' text is present on page
+	And i verify '2 Days' text is present on page
+	And i verify '3 Days' text is present on page
+	#And i verify '4-6 Days' text is present on page
+	#And i verify '7+ Days' text is present on page
+	And i verify 'None' text is present on page
+	And i print the total number of count
+	And i switch to main frame
+	And i wait for 10 seconds
+	And i logout from sandbox
+	
+	Examples: 
+      | User                  |
+      | StaffContraCosta      |
+      | SupervisorContraCosta |
+	
