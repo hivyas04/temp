@@ -1,0 +1,1901 @@
+    And i enter 'TodayDate' in Date textbox
+    And i select 'Abuse/Neglect Referral' value in Reason for the Call dropdown
+    And i enter 'randomText' in Screening Name textbox
+    And i enter 'randomText' in Screening Narrative for Div Paragraph Textbox in V1
+    And i select 'Caller (Non-Mandated Reporter)' radiobutton
+    And i select 'Caller (Non-Mandated Reporter)' radiobutton
+    And i select 'No' value in Call Back Required dropdown
+    And i click 'Save and Proceed' button
+    And i wait for 5 seconds
+    And i set page to view screening
+    And i wait for 7 seconds
+    And i capture SCR ID from view screening page
+    And i capture screening url from view screening page
+    ##########################  Add Person(s)  #########################
+    And i enter person 1 deatils with role as 'Alleged Perpetrator' in Screening
+    And i scroll to Down by 200 pixels
+    And i wait for 5 seconds
+    And i click '+ Add Row' button
+    And i wait for 5 seconds
+    And i scroll to Down by 200 pixels
+    And i enter person 2 deatils with role as 'Alleged Victim' in Screening
+    And i click 'Save and Proceed' button
+    And i wait for 5 seconds
+    ################  Add Addresss(es)  #######################
+    And i refresh the page
+    And i wait for 5 seconds
+    And i scroll on page to Address Type dropdown
+    And i wait for 5 seconds
+    And i select 'Location of Child(ren)' value in Address Type dropdown
+    And i enter 'randomText' in Address Line 1 textbox
+    And i enter 'Oakland' in City textbox
+    And i enter '94763' in Zip Code textbox
+    And i click 'Search' button
+    And i wait for 5 seconds
+    And i click 'Validate Address' button
+    And i wait for 5 seconds
+    And i scroll to Down by 200 pixels
+    And i wait for 5 seconds
+    And i select radiobutton
+    And i wait for 5 seconds
+    And i click 'Save and Proceed' button
+    And i wait for 5 seconds
+    And i scroll to Up by 600 pixels
+    And i set page to view screening
+    ########### Add Allegation(s) #################
+    And i select stored 'Alleged Victim' value from constant file in Select Alleged Victim dropdown
+    And i select stored 'Alleged Perpetrator' value from constant file in Select Alleged Perpetrator dropdown
+    And i select 'Caretaker Absence/Incapacity' value in Allegation Type dropdown
+    And i wait for 2 seconds
+    And i move Abandonment,Parent Deceased, values from Allegations Subtype available list to chosen list
+    And i click 'Save and Proceed' button
+    And i wait for 5 seconds
+    ############# Create contact log #################
+    And i refresh the page
+    And i wait for 5 seconds
+    And i click '+ Contact' button
+    And i wait for 5 seconds
+    And i enter 'TodayDate' in Date textbox
+    And i wait for 5 seconds
+    And i enter '12:00 AM' in Time textbox
+    And i wait for 5 seconds
+    And i select 'Consult with Collateral' value in Contact Purpose dropdown
+    And i wait for 5 seconds
+    And i enter and select 'Alleged Victim' value in On Behalf of Child searchbox
+    And i wait for 5 seconds
+    And i enter and select 'Hotline Staff ContraCosta' value from property file in Staff Person searchbox
+    And i wait for 5 seconds
+    And i select 'In-Person' value in Method dropdown
+    And i wait for 5 seconds
+    And i enter and select 'Alleged Perpetrator' value in Participant searchbox
+    And i wait for 5 seconds
+    And i select 'Completed' value in Contact Status dropdown
+    And i wait for 5 seconds
+    And i select 'Home' value in Location dropdown
+    And i wait for 5 seconds
+    And i click 'Save' button
+    And i wait for 10 seconds
+    Then i navigate to current screening using url
+    And i wait for 5 seconds
+    ############# Identify Safety Alert(s)  #################
+    And i click 'Save and Proceed' button
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 10 seconds
+    ###########  SDM Hotline Tool  #################
+    And i scroll to down by 200 pixels
+    And i wait for 5 seconds
+    And i select 'Immediate' value in Response Type dropdown
+    And i wait for 2 seconds
+    And i click 'Save and Proceed' button
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    ###############  Tribal Inquiry & Collaboration  #################
+    And i click 'Tribal Inquiry & Collaboration' link
+    And i wait for 5 seconds
+    And i scroll to Down by 200 pixels
+    And i enter 'TodayDate' in Date textbox
+    And i enter '12:00 AM' in Time textbox
+    And i select 'Reporting Party' value in Participant Type dropdown
+    And i scroll to Down by 200 pixels
+    And i enter and select 'Alleged Victim' value in On Behalf of Child searchbox
+    And i select 'In-Person' value in Method dropdown
+    And i select 'Tribal Inquiry' value in Contact Purpose dropdown
+    And i select 'Completed' value in Contact Status dropdown
+    And i enter and select 'Hotline Staff ContraCosta' value from property file in Staff Person searchbox
+    And i wait for 5 seconds
+    And i select 'Continue to Inquire' value in Initial ICWA Inquiry dropdown
+    And i wait for 5 seconds
+    And i select 'Home' value in Location dropdown
+    And i click 'Save and Proceed' button
+    And i verify 'Tribal Inquiry & Collaboration Record Created/ Updated Successfully!' toast message
+    And i wait for 5 seconds
+    ############### +ERR Doc  #################
+    And i generate ERR document
+    ######## Supervisor Review/Promotion  #################
+    And i scroll to down by 200 pixels
+    And i wait for 2 seconds
+    And i set page to view screening
+    And i wait for 5 seconds
+    And i enter and select 'Hotline Supervisor ContraCosta' value from property file in Approval Supervisor searchbox
+    And i click 'Save and Proceed' button
+    And i verify 'Record(s) saved successfully' toast message
+    And i wait for 5 seconds
+    #####################  Validate screening person - 1  #################
+    And i scroll to down by 300 pixels
+    And i wait for 5 seconds
+    And i set page to view screening
+    And i click 'relatedListScreeningPersons' element
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i capture record number 1 of Screening Person column from related Screening Persons table of Screening Persons page
+    And i click saved record of Screening Person column from Screening Persons page
+    And i refresh the page
+    And i wait for 5 seconds
+    And i click 'Validate Person' button
+    And i wait for 5 seconds
+    And i click 'Search' button
+    And i wait for 5 seconds
+    And i click 'New Person' button
+    And i wait for 5 seconds
+    And i select 'Male' value in Sex at Birth dropdown
+    And i click 'Save' button
+    And i wait for 3 seconds
+    And i verify 'Screening Person record has been attached' toast message
+    #####################  Validate screening person - 2 ##################
+    And i wait for 5 seconds
+    Then i navigate to current screening using url
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i scroll to down by 400 pixels
+    And i wait for 5 seconds
+    And i set page to view screening
+    And i click 'relatedListScreeningPersons' element
+    And i wait for 5 seconds
+    And i capture record number 2 of Screening Person column from related Screening Persons table of Screening Persons page
+    And i click saved record of Screening Person column from Screening Persons page
+    And i refresh the page
+    And i wait for 5 seconds
+    And i click 'Validate Person' button
+    And i wait for 5 seconds
+    And i click 'Search' button
+    And i wait for 5 seconds
+    And i click 'New Person' button
+    And i wait for 5 seconds
+    And i select 'Male' value in Sex at Birth dropdown
+    And i click 'Save' button
+    And i wait for 3 seconds
+    Then i navigate to current screening using url
+    And i wait for 5 seconds
+    ######################  Submit For Approval  #################
+    And i click 'Submit For Approval' button
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i enter 'Submitting for approval' in Comments textarea
+    And i wait for 2 seconds
+    And i click 'Submit' button
+    And i wait for 5 seconds
+    And i verify 'Screening has been submitted for approval.' text is present on page
+    And i click 'Close' button
+    And i wait for 5 seconds
+    And i click on Log Out
+    And i wait for 5 seconds
+    ######################  Approval  #################
+    When i logged in as 'SupervisorContraCosta' for V1 application
+    And i wait for 5 seconds
+    Then i click on the notification for SCR ID to approve
+    And i wait for 5 seconds
+    And i verify 'Approve' text is present on page
+    Then i Approve the approval request
+    And i set page to view approval
+    And i refresh the page
+    And i wait for 5 seconds
+    And i verify 'Approved' text is present on page
+    And i verify 'Approved' text for Status element
+    And i click on Log Out
+    And i wait for 5 seconds
+    #############  Assignment  #################
+    When i logged in as 'StaffContraCosta' for V1 application
+    And i wait for 5 seconds
+    And i navigate to Screenings page
+    And i wait for 5 seconds
+    And i select Approved Screenings list view on screenings page
+    And i wait for 5 seconds
+    And i search SCR ID in list view
+    And i wait for 5 seconds
+    And i click first record of Approved Screenings list view of screenings tab
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 7 seconds
+    And i enter and select 'erworker contracosta' value from property file in Primary Worker searchbox
+    And i wait for 5 seconds
+    And i click 'Save' button
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i set page to view screening
+    And i wait for 3 seconds
+    And i capture Folio ref from view screening page
+    And i capture Folio ref url from view screening page
+    And i wait for 5 seconds
+    And i click on Log Out
+    ############################  Logging in as ER Worker  #################
+    Given Application is in Login Page
+    When i logged in as 'ERWorkerContraCosta' for V1 application
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i refresh the page
+    And i wait for 7 seconds
+    And i click 'Approval/Audit' subtab
+    And i wait for 5 seconds
+    And i scroll to down by 200 pixels
+    And i click 'Edit' button
+    And i enter and select 'ersupervisor contracosta' value from property file in Approval Supervisor searchbox
+    And i click 'Save' button
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i set page to view folio
+    ######################## Update Allegation  #############################
+    And i click on 'Allegations' Partial link
+    And i wait for 5 seconds
+    And i click first Allegation ID from related Allegations table of Allegations page
+    And i wait for 5 seconds
+    Then i verify 'Allegation Conclusion' dropdown is present on page
+    Then i verify 'Allegation Conclusion Rationale' textbox is present on page
+    And i scroll to down by 200 pixels
+    And i wait for 2 seconds
+    And i select 'Unfounded' value in Allegation Conclusion dropdown
+    And i enter 'randomText' in Allegation Conclusion Rationale textbox
+    And i wait for 2 seconds
+    And i click 'Save' button
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    ######################## Update Allegation  #############################
+    And i click on 'Allegations' Partial link
+    And i wait for 5 seconds
+    And i click first Allegation ID from related Allegations table of Allegations page
+    And i wait for 5 seconds
+    Then i verify 'Allegation Conclusion' dropdown is present on page
+    Then i verify 'Allegation Conclusion Rationale' textbox is present on page
+    And i scroll to down by 200 pixels
+    And i wait for 2 seconds
+    And i select 'Unfounded' value in Allegation Conclusion dropdown
+    And i enter 'randomText' in Allegation Conclusion Rationale textbox
+    And i wait for 2 seconds
+    And i click 'Save' button
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i set page to view folio
+    ######################## Update Disposition  #############################
+   # And i set page to view folio
+    And i click on 'Disposition' Partial link
+    And i wait for 5 seconds
+    And i click first Disposition ID from related Disposition table of Disposition page
+    And i set page to view disposition
+    And i wait for 5 seconds
+    And i scroll to down by 200 pixels
+    And i wait for 5 seconds
+    And i scroll to down by 200 pixels
+    And i wait for 5 seconds
+    And i click 'Edit Closure Date' button
+    And i wait for 5 seconds
+    And i enter future date in 'MM/dd/YYYY' format for -2 days from today in Closure Date textbox
+    And i wait for 2 seconds
+    And i select 'Do Not Promote to Case' value in Disposition dropdown
+    And i enter 'randomText' in Rationale textarea
+    And i select 'Situation Stabilized' value in Disposition Closure Reason Type dropdown
+    And i wait for 2 seconds
+    And i click 'Save' button
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+   ######################  + Contact - Contact  ##########################################
+    And i refresh the page
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i wait for 5 seconds
+    And i click '+ Contact' button
+    And i wait for 15 seconds
+    And i select 'Structured Investigation Contact' radiobutton
+    And i wait for 5 seconds
+    And i click 'Next' button
+    And i wait for 5 seconds
+    And i enter 'TodaysFullDate' in Contact Start Date textbox
+    And i wait for 5 seconds
+    And i enter '12:00 am' in Contact Start Time textbox
+    And i wait for 3 seconds
+    And i select 'Completed' value in Contact Status dropdown
+    And i wait for 5 seconds
+    And i click 'Next' button
+    And i wait for 5 seconds
+    And i select 'Court' value in Location dropdown popup
+    And i wait for 5 seconds
+    And i click 'Next' button
+    And i wait for 10 seconds
+    And i check 'On behalf of children' checkbox
+    And i wait for 5 seconds
+    And i check 'Participant' checkbox
+    And i wait for 10 seconds
+    And i click 'Next' button
+    And i wait for 10 seconds
+    And i click 'Close this window' button
+    And i wait for 5 seconds
+    And i refresh the page
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i wait for 5 seconds
+    ########################### Related Folios ##########################################
+    And i click 'Related Folios' subtab
+    And i wait for 10 seconds
+    And i click 'Associate' button
+    And i wait for 5 seconds
+    And i enter and select <associatedFolio> value in Associated Folio Ref. searchbox
+    And i wait for 5 seconds
+    And i click 'Save' button
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    ######################### Submit for approval  #############################
+    And i set page to view folio
+    And i click 'Approval/Audit' subtab
+    And i wait for 3 seconds
+    Then i verify 'Edit Approval Supervisor' button is present on page
+    And i click 'Edit Approval Supervisor' button
+    And i wait for 3 seconds
+    And i enter and select 'ersupervisor contracosta' value from property file in Approval Supervisor searchbox
+    And i wait for 5 seconds
+    And i click 'Save' button
+    And i wait for 5 seconds
+    And i click 'Show more actions' button
+    And i wait for 2 seconds
+    And i click 'Submit for Approval' button
+    And i wait for 5 seconds
+    Then i verify ' to create a new Tribal Inquiry for an alleged victim.' text is present on page
+    Then i verify 'A Cross Report has not been created for this investigation.' text is present on page
+    Then i verify 'Are you sure you want to proceed?' text is present on page
+    And i wait for 2 seconds
+    And i click 'Close this window' button
+    And i wait for 5 seconds
+    And i click 'Show more actions' button
+    And i wait for 5 seconds
+    And i click 'Submit for Approval' button
+    And i wait for 5 seconds
+    Then i verify 'Are you sure you want to proceed?' text is present on page
+    And i click 'Yes' button
+    And i wait for 5 seconds
+    And i click 'Submit' button
+    ################  Logging in after submitting Folio for approval ############
+    When i logged in as '<User>' for V1 application
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    ########################## No Edit access for Allegation  #############################
+    And i click on 'Allegations' Partial link
+    And i wait for 2 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i click first Allegation ID from related Allegations table of Allegations page
+    And i wait for 5 seconds
+    And i scroll to down by 200 pixels
+    And i wait for 3 seconds
+    And i scroll to down by 200 pixels
+    And i wait for 3 seconds
+    And i verify 'Allegation Conclusion' dropdown is disabled
+    And i verify 'Allegation Conclusion Rationale' textbox is disabled
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i click on 'Allegations' Partial link
+    And i wait for 2 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i click 'New' button
+    And i wait for 5 seconds
+    And i verify 'This record is locked while pending approval. Please recall your submission if modifications are needed.' text is present on page
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    ######################## No Edit access for Disposition  #############################
+    And i wait for 5 seconds
+    And i click on 'Disposition' Partial link
+    And i wait for 2 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i click first Disposition ID from related Disposition table of Disposition page
+    And i set page to view disposition
+    And i refresh the page
+    And i wait for 5 seconds
+    And i click 'Edit Closure Date' button
+    And i wait for 5 seconds
+    And i enter future date in 'MM/dd/YYYY' format for -2 days from today in Closure Date textbox
+    And i wait for 2 seconds
+    And i select 'Do Not Promote to Case' value in Disposition dropdown
+    And i enter 'randomText' in Rationale textarea
+    And i select 'Situation Stabilized' value in Disposition Closure Reason Type dropdown
+    And i wait for 2 seconds
+    And i click 'Save' button
+    And i wait for 5 seconds
+    And i verify 'This record is locked while pending approval. Please recall your submission if modifications are needed.' text is present on page
+    And i wait for 5 seconds
+    And i click 'Cancel' button
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i wait for 5 seconds
+    ############################### Create access for + Tribal Inquiry & Collaboration  ##########################################
+    And i click '+ Tribal Inquiry & Collaboration' button
+    And i wait for 5 seconds
+    Then i verify 'Contact Start Date/ Time' text is present on page
+    Then i verify 'Contact End Date/ Time' text is present on page
+    And i enter 'TodayDate' in Date textbox
+    And i wait for 2 seconds
+    And i enter '1:00 AM' in Time textbox
+    And i wait for 2 seconds
+    And i select 'Reporting Party' value in Participant Type dropdown
+    And i wait for 2 seconds
+    And i enter and select 'Alleged Victim' value in On Behalf of Child searchbox
+    And i wait for 2 seconds
+    And i select 'Tribal Inquiry' value in Contact Purpose dropdown
+    And i wait for 2 seconds
+    And i select 'Phone' value in Method dropdown
+    And i wait for 2 seconds
+    And i select 'In Draft' value in Documentation Status dropdown
+    And i wait for 2 seconds
+    And i select 'Completed' value in Contact Status dropdown
+    And i wait for 2 seconds
+    And i select 'Continue to Inquire' value in Continued ICWA Inquiry dropdown
+    And i wait for 2 seconds
+    And i enter randomText in Narrative textarea of Tribal Inquiry
+    And i wait for 2 seconds
+    And i click 'Save' button
+    And i wait for 2 seconds
+    And i verify 'Tribal Inquiry & Collaboration Record Created/ Updated Successfully!' toast message
+    And i wait for 5 seconds
+    #######################  Create access for Structured Contact  ##########################################
+     And i refresh the page
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i wait for 5 seconds
+    And i click '+ Contact' button
+    And i wait for 15 seconds
+    And i select 'Structured Investigation Contact' radiobutton
+    And i wait for 5 seconds
+    And i click 'Next' button
+    And i wait for 5 seconds
+    And i enter 'TodaysFullDate' in Contact Start Date textbox
+    And i wait for 5 seconds
+    And i enter '12:00 am' in Contact Start Time textbox
+    And i wait for 3 seconds
+    And i select 'Completed' value in Contact Status dropdown
+    And i wait for 5 seconds
+    And i click 'Next' button
+    And i wait for 5 seconds
+    And i select 'Court' value in Location dropdown popup
+    And i wait for 5 seconds
+    And i click 'Next' button
+    And i wait for 10 seconds
+    And i check 'On behalf of children' checkbox
+    And i wait for 5 seconds
+    And i check 'Participant' checkbox
+    And i wait for 10 seconds
+    And i click 'Next' button
+    And i wait for 10 seconds
+    And i click 'Close this window' button
+    And i wait for 5 seconds
+    And i refresh the page
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i wait for 5 seconds
+    ########################### No Edit access for + Tribal Inquiry & Collaboration  ##########################################
+    And i click 'Contact Log & Tribal Inquiry' link
+    And i wait for 20 seconds
+    And i scroll to down by 200 pixels
+    And i wait for 5 seconds
+    And i scroll to down by 200 pixels
+    And i wait for 20 seconds
+    And i click 'Tribal Inquiry & Collaboration' link
+    And i wait for 5 seconds
+    And i capture record number 1 of Contact ID column from related Contact Log table of View folio page
+    And i click saved record of Contact ID column from View folio page
+    And i wait for 10 seconds
+    And i click 'Edit' button
+    And i wait for 5 seconds
+    And i verify 'This Screening has been approved and is now locked. You cannot edit/delete this record.' text is present on page
+    And i refresh the page
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i click 'Contact Log & Tribal Inquiry' link
+    And i wait for 20 seconds
+    And i scroll to down by 200 pixels
+    And i wait for 5 seconds
+    And i scroll to down by 200 pixels
+    And i wait for 20 seconds
+    And i click 'Tribal Inquiry & Collaboration' link
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i capture record number 2 of Contact ID column from related Contact Log table of View folio page
+    And i click saved record of Contact ID column from View folio page
+    And i wait for 10 seconds
+    And i click 'Edit' button
+    And i wait for 5 seconds
+    And i verify 'This record is locked while pending approval. Please recall your submission if modifications are needed.' text is present on page
+    And i set page to view folio
+    ########################  No Edit access for + Contact  ##########################################
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i click 'Contact Log & Tribal Inquiry' link
+    And i wait for 20 seconds
+    And i scroll to down by 200 pixels
+    And i wait for 5 seconds
+    And i capture record number 1 of Contact ID column from related Contact Log table of View folio page
+    And i click saved record of Contact ID column from View folio page
+    And i wait for 10 seconds
+    And i click 'Edit' button
+    And i wait for 5 seconds
+    And i verify 'This Screening has been approved and is now locked. You cannot edit/delete this record.' text is present on page
+    And i refresh the page
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i click 'Contact Log & Tribal Inquiry' link
+    And i wait for 20 seconds
+    And i scroll to down by 200 pixels
+    And i wait for 5 seconds
+    And i capture record number 2 of Contact ID column from related Contact Log table of view folio page
+    And i click saved record of Contact ID column from view folio page
+    And i wait for 10 seconds
+    And i click 'Edit' button
+    And i wait for 5 seconds
+    And i verify 'This record is locked while pending approval. Please recall your submission if modifications are needed.' text is present on page
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    ######################## No Edit access for Assignments ##########################################
+    And i wait for 7 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i click on 'Assignments' Partial link
+    And i wait for 5 seconds
+    And i click 'New' link
+    And i wait for 5 seconds
+    And i enter 'TodayDate' in Start Date textbox
+    And i enter and select 'erworker contracosta' value from property file in Person searchbox
+    And i select 'Court Worker' value in Worker Role dropdown
+    And i click 'Save' button
+    And i wait for 5 seconds
+    Then i verify 'This record is locked while pending approval. Please recall your submission if modifications are needed.' text is present on page
+    And i wait for 5 seconds
+    And i click 'Cancel' button
+    And i wait for 5 seconds
+    And i refresh the page
+    And i set page to view folio
+    And i wait for 5 seconds
+    And i click first Assignment ID from related Assignments table of view folio page
+    And i wait for 3 seconds
+    And i click 'Edit Start Date' button
+    And i wait for 5 seconds
+    And i enter 'TodayDate' in Start Date textbox
+    And i enter 'randomText' in Description textarea
+    And i select 'Clerical Support' value in Worker Role dropdown
+    And i click 'Save' button
+    And i wait for 5 seconds
+    Then i verify 'This record is locked while pending approval. Please recall your submission if modifications are needed.' text is present on page
+    And i click 'Cancel' button
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i wait for 7 seconds
+    ########################### No Edit access for Related Folios ##########################################
+    And i click 'Related Folios' subtab
+    And i wait for 10 seconds
+    And i verify 'Associate' button is disabled
+    And i wait for 5 seconds
+    And i scroll to down by 200 pixels
+    And i wait for 10 seconds
+    And i set page to view folio
+    Then i verify 'Unassociate' link is not present on page
+    And i wait for 5 seconds
+    ###########################No Edit access for Folio Person ##########################################
+    And i refresh the page
+    And i wait for 5 seconds
+    And i click on 'Persons' Partial link
+    And i wait for 5 seconds
+    And i capture record number 1 of Folio Person column from related Persons table of Persons page
+    And i click saved record of Folio Person column from Persons page
+    And i wait for 10 seconds
+    And i click 'Validate Person' button
+    And i wait for 10 seconds
+    And i verify 'This record is locked while pending approval. Please recall your submission if modifications are needed.' text is present on page
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i click on 'Persons' Partial link
+    And i wait for 5 seconds
+    And i click 'New' button
+    And i wait for 5 seconds
+    And i verify 'This record is locked while pending approval. Please recall your submission if modifications are needed.' text is present on page
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    ########################### No Edit access for CSE ##########################################
+    And i click 'Commercial Sexual Exploitation (CSE)' button
+    And i wait for 5 seconds
+    And i select 'SelectFolioPerson' radiobutton
+    And i click 'Next' button
+    And i wait for 5 seconds
+    And i select 'At Risk' value in next CSE Type dropdown
+    And i wait for 5 seconds
+    And i enter 'TodayDate' in next Start Date textbox
+    And i wait for 5 seconds
+    And i click 'Save' button
+    And i wait for 10 seconds
+    And i verify 'You cannot add/update CSE information while the Investigation record is pending approval. To add/update CSE information, first recall the approval request.' text is present on page
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    ########################### Not able to Submit for Approval again ##########################################
+    And i click 'Show more actions' button
+    And i wait for 5 seconds
+    And i click 'Submit for Approval' link
+    And i wait for 10 seconds
+    And i verify 'This record has already been submitted for approval.' text is present on page
+    And i wait for 5 seconds
+    And i click 'Finish' button
+    And i wait for 5 seconds
+    And i click on Log Out
+    And i wait for 5 seconds
+
+       Examples: 
+      | User                           |    associatedFolio   |
+      | ERWorkerContraCosta            |    '00007423'        |
+      | ERSupervisorContraCostaUserTwo |    '00007423'        |
+      
+   
+  @Test1009_part2
+  Scenario Outline: CARESV1-T1009_8260 Part-2 Verify the Folio record along with the related records are not editable to the ER Worker/anyone who has edit access to the investigation record after the folio record is in "Pending Approval" or "Resubmitted" Status
+    When i logged in as 'StaffContraCosta' for V1 application
+    And i wait for 10 seconds
+    And verify i am on Home page
+    And i wait for 5 seconds
+    And i navigate to Screenings page
+    And i wait for 5 seconds
+    And i click 'New' button
+    And i wait for 5 seconds
+    ######## Initial Screening Information  ############
+    And i enter 'TodayDate' in Date textbox
+    And i select 'Abuse/Neglect Referral' value in Reason for the Call dropdown
+    And i enter 'randomText' in Screening Name textbox
+    And i enter 'randomText' in Screening Narrative for Div Paragraph Textbox in V1
+    And i select 'Non-Mandated Reporter' radiobutton
+    And i select 'No' value in Does This Screening Require a Call Back? dropdown
+    And i click 'Save and Proceed' button
+    And i wait for 5 seconds
+    And i capture SCR ID from view screening page
+    And i capture screening url from view screening page
+    ##########################  Add Person(s)  #########################
+    ########################  Add Person(s)  #########################
+    And i enter person 1 deatils with role as 'Alleged Perpetrator' in Screening
+    And i scroll to Down by 200 pixels
+    And i wait for 5 seconds
+    And i enter person 2 deatils with role as 'Alleged Victim' in Screening
+    And i click 'Save and Proceed' button
+    And i wait for 5 seconds
+    ################  Add Addresss(es)  #######################
+    ##############  Add Addresss(es)  #######################
+    And i refresh the page
+    And i wait for 5 seconds
+    And i scroll on page to Address Type dropdown
+    And i wait for 5 seconds
+    And i select 'Location of Incident' value in Address Type dropdown
+    And i select 'Location of Child(ren)' value in Address Type dropdown
+    And i enter 'randomText' in Address Line 1 textbox
+    And i enter 'Oakland' in City textbox
+    And i enter '94763' in Zip Code textbox
+    And i wait for 5 seconds
+    And i scroll to Up by 600 pixels
+    And i set page to view screening
+    ########### Add Allegation(s) #################
+    ######### Add Allegation(s) #################
+    And i select stored 'Alleged Victim' value from constant file in Select Alleged Victim dropdown
+    And i select stored 'Alleged Perpetrator' value from constant file in Select Alleged Perpetrator dropdown
+    And i select 'Caretaker Absence/Incapacity' value in Allegation Type dropdown
+    And i move Abandonment,Parent Deceased, values from Allegations Subtype available list to chosen list
+    And i click 'Save and Proceed' button
+    And i wait for 5 seconds
+    ############# Create contact log #################
+    ########### Create contact log #################
+    And i refresh the page
+    And i wait for 5 seconds
+    And i click '+ Contact' button
+    And i wait for 5 seconds
+    And i click 'Save' button
+    And i wait for 10 seconds
+    ############# Identify Safety Alert(s)  #################
+    ########### Identify Safety Alert(s)  #################
+    And i click 'Save and Proceed' button
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 10 seconds
+    ###########  SDM Hotline Tool  #################
+    #########  SDM Hotline Tool  #################
+    And i scroll to down by 200 pixels
+    And i wait for 5 seconds
+    And i select 'Immediate' value in Response Type dropdown
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    ###############  Tribal Inquiry & Collaboration  #################
+    #############  Tribal Inquiry & Collaboration  #################
+    And i click 'Tribal Inquiry & Collaboration' link
+    And i wait for 5 seconds
+    And i scroll to Down by 200 pixels
+    And i click 'Save and Proceed' button
+    And i verify 'Tribal Inquiry & Collaboration Record Created/ Updated Successfully!' toast message
+    And i wait for 5 seconds
+    ############### +ERR Doc  #################
+    ############# +ERR Doc  #################
+    And i generate ERR document
+    ######## Supervisor Review/Promotion  #################
+    ###### Supervisor Review/Promotion  #################
+    And i scroll to down by 200 pixels
+    And i wait for 2 seconds
+    And i set page to view screening
+    And i click 'Save and Proceed' button
+    And i verify 'Record(s) saved successfully' toast message
+    And i wait for 5 seconds
+    #####################  Validate screening person - 1  #################
+    ###################  Validate screening person - 1  #################
+    And i scroll to down by 300 pixels
+    And i click on 'Screening Persons' Partial link
+    And i wait for 5 seconds
+    And i click 'Save' button
+    And i wait for 3 seconds
+    And i verify 'Screening Person record has been attached' toast message
+    #####################  Validate screening person - 2 ##################
+    ###################  Validate screening person - 2 ##################
+    And i wait for 5 seconds
+    Then i navigate to current screening using url
+    And i wait for 5 seconds
+    And i verify 'Screening Person record has been attached' toast message
+    Then i navigate to current screening using url
+    And i wait for 5 seconds
+    ######################  Submit For Approval  #################
+    ####################  Submit For Approval  #################
+    And i click 'Submit For Approval' button
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i click on Log Out
+    And i wait for 5 seconds
+    ######################  Approval  #################
+    ####################  Approval  #################
+    When i logged in as 'SupervisorContraCosta' for V1 application
+    And i wait for 5 seconds
+    Then i click on the notification for SCR ID to approve
+    And i verify 'Approved' text for Status element
+    And i click on Log Out
+    And i wait for 5 seconds
+    #############  Assignment  #################
+    ###########  Assignment  #################
+    When i logged in as 'StaffContraCosta' for V1 application
+    And i wait for 5 seconds
+    And i navigate to Screenings page
+    And i capture Folio ref url from view screening page
+    And i wait for 5 seconds
+    And i click on Log Out
+    ############################  Logging in as ER Worker  #################
+    ##########################  Logging in as ER Worker  #################
+    Given Application is in Login Page
+    When i logged in as 'ERWorkerContraCosta' for V1 application
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i set page to view folio
+    ######################## Update Allegation  #############################
+    ###################### Update Allegation  #############################
+    And i click on 'Allegations' Partial link
+    And i wait for 5 seconds
+    And i click first Allegation ID from related Allegations table of Allegations page
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i set page to view folio
+    ######################## Update Allegation  #############################
+     ###################### Update Allegation  #############################
+    And i click on 'Allegations' Partial link
+    And i wait for 5 seconds
+    And i click first Allegation ID from related Allegations table of Allegations page
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i set page to view folio
+    ######################## Update Disposition  #############################
+    ###################### Update Disposition  #############################
+    And i set page to view folio
+    And i click on 'Disposition' Partial link
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    ###############################  + Tribal Inquiry & Collaboration  ##########################################
+    #############################  + Tribal Inquiry & Collaboration  ##########################################
+    And i click '+ Tribal Inquiry & Collaboration' button
+    And i wait for 5 seconds
+    Then i verify 'Contact Start Date/ Time' text is present on page
+    And i wait for 2 seconds
+    And i verify 'Tribal Inquiry & Collaboration Record Created/ Updated Successfully!' toast message
+    And i wait for 5 seconds
+    #####################  + Contact - Contact  ##########################################
+    ###################  + Contact - Contact  ##########################################
+     And i refresh the page
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i wait for 5 seconds
+    And i click '+ Contact' button
+    And i wait for 7 seconds
+    And i wait for 15 seconds
+    And i select 'Structured Investigation Contact' radiobutton
+    And i wait for 9 seconds
+    And i wait for 5 seconds
+    And i click 'Next' button
+    And i wait for 5 seconds
+    And i enter 'TodayDate' in Date textbox
+    And i enter 'TodaysFullDate' in Contact Start Date textbox
+    And i wait for 5 seconds
+    And i enter '12:00 AM' in Time textbox
+    And i enter '12:00 am' in Contact Start Time textbox
+    And i wait for 3 seconds
+    And i select 0 position from On Behalf of Child inputdropdown New
+    And i select 'Home' value in Location dropdown
+    And i select 'Completed' value in Contact Status dropdown
+    And i wait for 5 seconds
+    And i select 'In-Person' value in Method dropdown
+    And i click 'Next' button
+    And i wait for 5 seconds
+    And i select 'Completed' value in Contact Status dropdown
+    And i select 'Court' value in Location dropdown popup
+    And i wait for 5 seconds
+    And i select 0 position from Participant inputdropdown New
+    And i click 'Next' button
+    And i wait for 10 seconds
+    And i check 'On behalf of children' checkbox
+    And i wait for 5 seconds
+    And i select 0 position from Participant inputdropdown New
+    And i check 'Participant' checkbox
+    And i wait for 10 seconds
+    And i click 'Next' button
+    And i wait for 10 seconds
+    And i click 'Close this window' button
+    And i wait for 5 seconds
+    And i select 'Yes' value in Is the physical home environment safe? dropdown
+    And i enter LargeRandomText in 'Investigation Introduction' textarea with length '10'
+    And i enter LargeRandomText in 'Indian Ancestry' textarea with length '10'
+    And i select 'Finalized' value in Documentation Status dropdown
+    And i verify 'Save' button is present on page
+    And i wait for 3 seconds
+    And i click 'Save' button
+    And i wait for 7 seconds
+    And i refresh the page
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    #########################  Assignments ##########################################
+      Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+     And i wait for 7 seconds
+    #######################  Assignments ##########################################
+    And i wait for 7 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i click on 'Assignments' Partial link
+    And i wait for 5 seconds
+    And i click 'New' link
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    ########################### Related Folios ##########################################
+    ######################### Related Folios ##########################################
+    And i click 'Related Folios' subtab
+    And i wait for 10 seconds
+    And i click 'Associate' button
+    And i wait for 5 seconds
+    And i click 'Save' button
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i refresh the page
+    And i wait for 5 seconds
+    And i set page to view folio
+    ######################### Submit for approval  #############################
+    ####################### Submit for approval  #############################
+    And i click 'Show more actions' button
+    And i click 'Submit for Approval' link
+    And i wait for 5 seconds
+    And i wait for 5 seconds
+    And i click 'Finish' button
+    And i wait for 5 seconds
+    ########################  Recalling the Folio record  ################
+    And i refresh the page
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i click 'Approval/Audit' subtab
+    And i wait for 3 seconds
+    And i scroll to down by 200 pixels
+    And i wait for 3 seconds
+    And i scroll to down by 200 pixels
+    And i wait for 3 seconds
+    And i click 'Recall' button
+    And i wait for 6 seconds
+    And i click Recall button 2
+    And i wait for 6 seconds
+    And i verify 'Recalled' text is present on page
+    And i wait for 10 seconds
+    ##################  Resubmitting for approval  ############
+    And i click 'Show more actions' button
+    And i wait for 10 seconds
+    And i click 'Submit for Approval' link
+    And i wait for 5 seconds
+    And i click 'Yes' button
+    And i wait for 3 seconds
+    And i click 'Submit' button
+    And i wait for 6 seconds
+    And i click 'Finish' button
+    And i wait for 6 seconds
+    And i click on Log Out
+    And i wait for 5 seconds
+    ################  Logging in after submitting Folio for approval ############
+    ########################  Logging in after Resubmitting Folio  ##############################
+    Given Application is in Login Page
+    When i logged in as '<User>' for V1 application
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    ########################## No Edit access for Allegation  #############################
+    ############################ No Edit access for Allegation  #############################
+    And i click on 'Allegations' Partial link
+    And i wait for 2 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i click on 'Allegations' Partial link
+    And i wait for 2 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i click 'New' button
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    ######################## No Edit access for Disposition  #############################
+    ########################## No Edit access for Disposition  #############################
+    And i wait for 5 seconds
+    And i click on 'Disposition' Partial link
+    And i wait for 2 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i wait for 5 seconds
+    ############################### Create access for + Tribal Inquiry & Collaboration  ##########################################
+    ############################# Create access for + Tribal Inquiry & Collaboration  ##########################################
+    And i click '+ Tribal Inquiry & Collaboration' button
+    And i wait for 5 seconds
+    Then i verify 'Contact Start Date/ Time' text is present on page
+    And i wait for 2 seconds
+    And i verify 'Tribal Inquiry & Collaboration Record Created/ Updated Successfully!' toast message
+    And i wait for 5 seconds
+    #######################  Create access for Structured Contact  ##########################################
+    ########################  Create access for Structured Contact  ##########################################
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i wait for 5 seconds
+    And i click '+ Contact' button
+    And i wait for 7 seconds
+    And i select 'Structured Investigation Contact' radiobutton
+    And i enter LargeRandomText in 'Indian Ancestry' textarea with length '10'
+    And i select 'Finalized' value in Documentation Status dropdown
+    And i verify 'Save' button is present on page
+    And i wait for 5 seconds
+    And i wait for 3 seconds
+    And i click 'Save' button
+    And i wait for 5 seconds
+    And i verify 'Contact Log Record Created/ Updated Successfully!' toast message
+    And i wait for 7 seconds
+    And i refresh the page
+    And i wait for 7 seconds
+    And i set page to view folio
+    And i wait for 5 seconds
+    ########################### No Edit access for + Tribal Inquiry & Collaboration  ##########################################
+    ########################## No Edit access for + Tribal Inquiry & Collaboration  ##########################################
+    And i click 'Contact Log & Tribal Inquiry' link
+    And i wait for 20 seconds
+    And i scroll to down by 200 pixels
+    And i wait for 20 seconds
+    And i click 'Tribal Inquiry & Collaboration' link
+    And i wait for 5 seconds
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    And i refresh the page
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i capture record number 1 of Contact ID column from related Contact Log table of View folio page
+    And i click saved record of Contact ID column from View folio page
+    And i wait for 10 seconds
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    #And i set page to view folio
+    And i set page to view folio
+    And i capture record number 2 of Contact ID column from related Contact Log table of View folio page
+    And i click saved record of Contact ID column from View folio page
+    And i wait for 10 seconds
+    And i wait for 20 seconds
+    And i scroll to down by 200 pixels
+    And i wait for 5 seconds
+    #And i set page to view folio
+    And i capture record number 1 of Contact ID column from related Contact Log table of View folio page
+    And i click saved record of Contact ID column from View folio page
+    And i set page to view folio
+    And i capture record number 1 of Contact ID column from related Contact Log table of view folio page
+    And i click saved record of Contact ID column from view folio page
+    And i wait for 10 seconds
+    And i click 'Edit' button
+    And i wait for 5 seconds
+    And i wait for 20 seconds
+    And i scroll to down by 200 pixels
+    And i wait for 5 seconds
+    #And i set page to view folio
+    And i set page to view folio
+    And i capture record number 2 of Contact ID column from related Contact Log table of view folio page
+    And i click saved record of Contact ID column from view folio page
+    And i wait for 10 seconds
+    And i wait for 5 seconds
+    And i set page to view folio
+    ######################## No Edit access for Assignments ##########################################
+    And i wait for 7 seconds
+     And i refresh the page
+   And i wait for 7 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i click on 'Assignments' Partial link
+    And i wait for 5 seconds
+    And i click 'New' link
+    And i click 'New' button
+    And i wait for 5 seconds
+    And i enter 'TodayDate' in Start Date textbox
+    And i enter and select 'erworker contracosta' value from property file in Person searchbox
+    And i enter and select 'Hotline Supervisor ContraCosta' value from property file in Person searchbox
+    And i select 'Court Worker' value in Worker Role dropdown
+    And i click 'Save' button
+    And i wait for 5 seconds
+    And i wait for 5 seconds
+    And i click 'Cancel' button
+    And i wait for 5 seconds
+    And i refresh the page
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i click on 'Assignments' Partial link
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i wait for 5 seconds
+    And i click first Assignment ID from related Assignments table of view folio page
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i wait for 7 seconds
+    ########################### No Edit access for Related Folios ##########################################
+    ######################### No Edit access for Related Folios ##########################################
+    And i wait for 5 seconds
+    And i click 'Related Folios' subtab
+    And i wait for 10 seconds
+    And i verify 'Associate' button is disabled
+    And i set page to view folio
+    Then i verify 'Unassociate' link is not present on page
+    And i wait for 5 seconds
+    ###########################No Edit access for Folio Person ##########################################
+    #########################No Edit access for Folio Person ##########################################
+    And i refresh the page
+    And i wait for 5 seconds
+    And i click on 'Persons' Partial link
+    And i wait for 10 seconds
+    And i click 'Validate Person' button
+    And i wait for 10 seconds
+    And i verify 'This record is locked while pending approval. Please recall your submission if modifications are needed.' text is present on page
+    Then i verify 'This record is locked while pending approval. Please recall your submission if modifications are needed.' text is present on page
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i click 'New' button
+    And i wait for 5 seconds
+    And i verify 'This record is locked while pending approval. Please recall your submission if modifications are needed.' text is present on page
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    ########################### No Edit access for CSE ##########################################
+    ######################### No Edit access for CSE ##########################################
+    And i click 'Commercial Sexual Exploitation (CSE)' button
+    And i wait for 5 seconds
+    And i select 'SelectFolioPerson' radiobutton
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    ########################### Not able to Submit for Approval again ##########################################
+    ######################### Not able to Submit for Approval again ##########################################
+    And i click 'Show more actions' button
+    And i wait for 5 seconds
+    And i click 'Submit for Approval' link
+    And i click on Log Out
+    And i wait for 5 seconds
+
+       Examples: 
+    Examples: 
+      | User                           |    associatedFolio   |
+      | ERWorkerContraCosta            |    '00002503'        |
+     # | ERSupervisorContraCostaUserTwo |    '00002503'        |
+      
+   
+  #@Test1009_part2
+  #Scenario Outline: CARESV1-T1009_8260 Part-2 Verify the Folio record along with the related records are not editable to the ER Worker/anyone who has edit access to the investigation record after the folio record is in "Pending Approval" or "Resubmitted" Status
+    #When i logged in as 'StaffContraCosta' for V1 application
+    #And i wait for 10 seconds
+    #And verify i am on Home page
+    #And i wait for 5 seconds
+    #And i navigate to Screenings page
+    #And i wait for 5 seconds
+    #And i click 'New' button
+    #And i wait for 5 seconds
+    ######### Initial Screening Information  ############
+    #And i enter 'TodayDate' in Date textbox
+    #And i select 'Abuse/Neglect Referral' value in Reason for the Call dropdown
+    #And i enter 'randomText' in Screening Name textbox
+    #And i enter 'randomText' in Call Narrative for Div Paragraph Textbox in V1
+    #And i select 'Non-Mandated Reporter' radiobutton
+    #And i select 'No' value in Does This Screening Require a Call Back? dropdown
+    #And i click 'Save and Proceed' button
+    #And i wait for 5 seconds
+    #And i set page to view screening
+    #And i wait for 5 seconds
+    #And i capture SCR ID from view screening page
+    #And i capture screening url from view screening page
+    #########################  Add Person(s)  #########################
+    #And i enter person 1 deatils with role as 'Alleged Perpetrator' in Screening
+    #And i scroll to Down by 200 pixels
+    #And i wait for 5 seconds
+    #And i click '+ Add Row' button
+    #And i wait for 5 seconds
+    #And i scroll to Down by 200 pixels
+    #And i enter person 2 deatils with role as 'Alleged Victim' in Screening
+    #And i click 'Save and Proceed' button
+    #And i wait for 5 seconds
+    ###############  Add Addresss(es)  #######################
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #And i scroll on page to Address Type dropdown
+    #And i wait for 5 seconds
+    #And i select 'Location of Incident' value in Address Type dropdown
+    #And i enter 'randomText' in Address Line 1 textbox
+    #And i enter 'Oakland' in City textbox
+    #And i enter '94763' in Zip Code textbox
+    #And i click 'Search' button
+    #And i wait for 5 seconds
+    #And i click 'Validate Address' button
+    #And i wait for 5 seconds
+    #And i scroll to Down by 200 pixels
+    #And i wait for 5 seconds
+    #And i select radiobutton
+    #And i wait for 5 seconds
+    #And i click 'Save and Proceed' button
+    #And i wait for 5 seconds
+    #And i scroll to Up by 600 pixels
+    #And i set page to view screening
+    ########## Add Allegation(s) #################
+    #And i select stored 'Alleged Victim' value from constant file in Select Alleged Victim dropdown
+    #And i select stored 'Alleged Perpetrator' value from constant file in Select Alleged Perpetrator dropdown
+    #And i select 'Caretaker Absence/Incapacity' value in Allegation Type dropdown
+    #And i wait for 2 seconds
+    #And i move Abandonment,Parent Deceased, values from Allegations Subtype available list to chosen list
+    #And i click 'Save and Proceed' button
+    #And i wait for 5 seconds
+    ############ Create contact log #################
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #And i click '+ Contact' button
+    #And i wait for 5 seconds
+    #And i enter 'TodayDate' in Date textbox
+    #And i wait for 5 seconds
+    #And i enter '12:00 AM' in Time textbox
+    #And i wait for 5 seconds
+    #And i select 'Consult with Collateral' value in Contact Purpose dropdown
+    #And i wait for 5 seconds
+    #And i enter and select 'Alleged Victim' value in On Behalf of Child searchbox
+    #And i wait for 5 seconds
+    #And i enter and select 'Hotline Staff ContraCosta' value from property file in Staff Person searchbox
+    #And i wait for 5 seconds
+    #And i select 'In-Person' value in Method dropdown
+    #And i wait for 5 seconds
+    #And i enter and select 'Alleged Perpetrator' value in Participant searchbox
+    #And i wait for 5 seconds
+    #And i select 'Completed' value in Contact Status dropdown
+    #And i wait for 5 seconds
+    #And i select 'Home' value in Location dropdown
+    #And i wait for 5 seconds
+    #And i click 'Save' button
+    #And i wait for 10 seconds
+    ############ Identify Safety Alert(s)  #################
+    #And i click 'Save and Proceed' button
+    #And i wait for 5 seconds
+    #And i refresh the page
+    #And i wait for 10 seconds
+    ##########  SDM Hotline Tool  #################
+    #And i scroll to down by 200 pixels
+    #And i wait for 5 seconds
+    #And i select 'Immediate' value in Response Type dropdown
+    #And i wait for 2 seconds
+    #And i click 'Save and Proceed' button
+    #And i wait for 5 seconds
+    #And i refresh the page
+    #And i wait for 5 seconds
+    ##############  Tribal Inquiry & Collaboration  #################
+    #And i click 'Tribal Inquiry & Collaboration' link
+    #And i wait for 5 seconds
+    #And i scroll to Down by 200 pixels
+    #And i enter 'TodayDate' in Date textbox
+    #And i enter '12:00 AM' in Time textbox
+    #And i select 'Reporting Party' value in Participant Type dropdown
+    #And i scroll to Down by 200 pixels
+    #And i enter and select 'Alleged Victim' value in On Behalf of Child searchbox
+    #And i select 'In-Person' value in Method dropdown
+    #And i select 'Tribal Inquiry' value in Contact Purpose dropdown
+    #And i select 'Completed' value in Contact Status dropdown
+    #And i enter and select 'Hotline Staff ContraCosta' value from property file in Staff Person searchbox
+    #And i wait for 5 seconds
+    #And i select 'Continue to Inquire' value in Initial ICWA Inquiry dropdown
+    #And i wait for 5 seconds
+    #And i select 'Home' value in Location dropdown
+    #And i click 'Save and Proceed' button
+    #And i verify 'Tribal Inquiry & Collaboration Record Created/ Updated Successfully!' toast message
+    #And i wait for 5 seconds
+    ############## +ERR Doc  #################
+    #And i generate ERR document
+    ####### Supervisor Review/Promotion  #################
+    #And i scroll to down by 200 pixels
+    #And i wait for 2 seconds
+    #And i set page to view screening
+    #And i wait for 5 seconds
+    #And i enter and select 'Hotline Supervisor ContraCosta' value from property file in Approval Supervisor searchbox
+    #And i click 'Save and Proceed' button
+    #And i verify 'Record(s) saved successfully' toast message
+    #And i wait for 5 seconds
+    ####################  Validate screening person - 1  #################
+    #And i scroll to down by 300 pixels
+    #And i click on 'Screening Persons' Partial link
+    #And i wait for 5 seconds
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #And i capture record number 1 of Screening Person column from related Screening Persons table of Screening Persons page
+    #And i click saved record of Screening Person column from Screening Persons page
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #And i click 'Validate Person' button
+    #And i wait for 5 seconds
+    #And i click 'Search' button
+    #And i wait for 5 seconds
+    #And i click 'New Person' button
+    #And i wait for 5 seconds
+    #And i select 'Male' value in Sex at Birth dropdown
+    #And i click 'Save' button
+    #And i wait for 3 seconds
+    #And i verify 'Screening Person record has been attached' toast message
+    ####################  Validate screening person - 2 ##################
+    #And i wait for 5 seconds
+    #Then i navigate to current screening using url
+    #And i wait for 5 seconds
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #And i scroll to down by 400 pixels
+    #And i click on 'Screening Persons' Partial link
+    #And i wait for 5 seconds
+    #And i capture record number 2 of Screening Person column from related Screening Persons table of Screening Persons page
+    #And i click saved record of Screening Person column from Screening Persons page
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #And i click 'Validate Person' button
+    #And i wait for 5 seconds
+    #And i click 'Search' button
+    #And i wait for 5 seconds
+    #And i click 'New Person' button
+    #And i wait for 5 seconds
+    #And i select 'Male' value in Sex at Birth dropdown
+    #And i click 'Save' button
+    #And i wait for 3 seconds
+    #And i verify 'Screening Person record has been attached' toast message
+    #Then i navigate to current screening using url
+    #And i wait for 5 seconds
+    #####################  Submit For Approval  #################
+    #And i click 'Submit For Approval' button
+    #And i wait for 5 seconds
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #And i enter 'Submitting for approval' in Comments textarea
+    #And i wait for 2 seconds
+    #And i click 'Submit' button
+    #And i wait for 5 seconds
+    #And i verify 'Screening has been submitted for approval.' text is present on page
+    #And i click 'Close' button
+    #And i wait for 5 seconds
+    #And i click on Log Out
+    #And i wait for 5 seconds
+    #####################  Approval  #################
+    #When i logged in as 'SupervisorContraCosta' for V1 application
+    #And i wait for 5 seconds
+    #Then i click on the notification for SCR ID to approve
+    #And i wait for 5 seconds
+    #And i verify 'Approve' text is present on page
+    #Then i Approve the approval request
+    #And i set page to view approval
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #And i verify 'Approved' text is present on page
+    #And i verify 'Approved' text for Status element
+    #And i click on Log Out
+    #And i wait for 5 seconds
+    ############  Assignment  #################
+    #When i logged in as 'StaffContraCosta' for V1 application
+    #And i wait for 5 seconds
+    #And i navigate to Screenings page
+    #And i wait for 5 seconds
+    #And i select Approved Screenings list view on screenings page
+    #And i wait for 5 seconds
+    #And i search SCR ID in list view
+    #And i wait for 5 seconds
+    #And i click first record of Approved Screenings list view of screenings tab
+    #And i wait for 5 seconds
+    #And i refresh the page
+    #And i wait for 7 seconds
+    #And i enter and select 'erworker contracosta' value from property file in Primary Worker searchbox
+    #And i wait for 5 seconds
+    #And i click 'Save' button
+    #And i wait for 5 seconds
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #And i set page to view screening
+    #And i wait for 3 seconds
+    #And i capture Folio ref from view screening page
+    #And i capture Folio ref url from view screening page
+    #And i wait for 5 seconds
+    #And i click on Log Out
+    ###########################  Logging in as ER Worker  #################
+    #Given Application is in Login Page
+    #When i logged in as 'ERWorkerContraCosta' for V1 application
+    #And i wait for 5 seconds
+    #Then i navigate to current folio using url
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    #And i refresh the page
+    #And i wait for 7 seconds
+    #And i click 'Approval/Audit' subtab
+    #And i wait for 5 seconds
+    #And i scroll to down by 200 pixels
+    #And i click 'Edit' button
+    #And i enter and select 'ersupervisor contracosta' value from property file in Approval Supervisor searchbox
+    #And i click 'Save' button
+    #And i wait for 5 seconds
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    ####################### Update Allegation  #############################
+    #And i click on 'Allegations' Partial link
+    #And i wait for 5 seconds
+    #And i click first Allegation ID from related Allegations table of Allegations page
+    #And i wait for 5 seconds
+    #Then i verify 'Allegation Conclusion' dropdown is present on page
+    #Then i verify 'Allegation Conclusion Rationale' textbox is present on page
+    #And i scroll to down by 200 pixels
+    #And i wait for 2 seconds
+    #And i select 'Unfounded' value in Allegation Conclusion dropdown
+    #And i enter 'randomText' in Allegation Conclusion Rationale textbox
+    #And i wait for 2 seconds
+    #And i click 'Save' button
+    #And i wait for 5 seconds
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #Then i navigate to current folio using url
+    #And i set page to view folio
+     ####################### Update Allegation  #############################
+    #And i click on 'Allegations' Partial link
+    #And i wait for 5 seconds
+    #And i click first Allegation ID from related Allegations table of Allegations page
+    #And i wait for 5 seconds
+    #Then i verify 'Allegation Conclusion' dropdown is present on page
+    #Then i verify 'Allegation Conclusion Rationale' textbox is present on page
+    #And i scroll to down by 200 pixels
+    #And i wait for 2 seconds
+    #And i select 'Unfounded' value in Allegation Conclusion dropdown
+    #And i enter 'randomText' in Allegation Conclusion Rationale textbox
+    #And i wait for 2 seconds
+    #And i click 'Save' button
+    #And i wait for 5 seconds
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #Then i navigate to current folio using url
+    #And i set page to view folio
+    ####################### Update Disposition  #############################
+    #And i set page to view folio
+    #And i click on 'Disposition' Partial link
+    #And i wait for 5 seconds
+    #And i click first Disposition ID from related Disposition table of Disposition page
+    #And i set page to view disposition
+    #And i wait for 5 seconds
+    #And i click 'Edit Closure Date' button
+    #And i wait for 5 seconds
+    #And i enter future date in 'MM/dd/YYYY' format for -2 days from today in Closure Date textbox
+    #And i wait for 2 seconds
+    #And i select 'Do Not Promote to Case' value in Disposition dropdown
+    #And i enter 'randomText' in Rationale textarea
+    #And i select 'Situation Stabilized' value in Disposition Closure Reason Type dropdown
+    #And i wait for 2 seconds
+    #And i click 'Save' button
+    #And i wait for 5 seconds
+    #Then i navigate to current folio using url
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    ##############################  + Tribal Inquiry & Collaboration  ##########################################
+    #And i click '+ Tribal Inquiry & Collaboration' button
+    #And i wait for 5 seconds
+    #Then i verify 'Contact Start Date/ Time' text is present on page
+    #Then i verify 'Contact End Date/ Time' text is present on page
+    #And i enter 'TodayDate' in Date textbox
+    #And i wait for 2 seconds
+    #And i enter '1:00 AM' in Time textbox
+    #And i wait for 2 seconds
+    #And i select 'Reporting Party' value in Participant Type dropdown
+    #And i wait for 2 seconds
+    #And i enter and select 'Alleged Victim' value in On Behalf of Child searchbox
+    #And i wait for 2 seconds
+    #And i select 'Tribal Inquiry' value in Contact Purpose dropdown
+    #And i wait for 2 seconds
+    #And i select 'Phone' value in Method dropdown
+    #And i wait for 2 seconds
+    #And i select 'In Draft' value in Documentation Status dropdown
+    #And i wait for 2 seconds
+    #And i select 'Completed' value in Contact Status dropdown
+    #And i wait for 2 seconds
+    #And i select 'Continue to Inquire' value in Continued ICWA Inquiry dropdown
+    #And i wait for 5 seconds
+    #And i enter randomText in Narrative textarea of Tribal Inquiry
+    #And i wait for 2 seconds
+    #And i click 'Save' button
+    #And i wait for 2 seconds
+    #And i verify 'Tribal Inquiry & Collaboration Record Created/ Updated Successfully!' toast message
+    #And i wait for 5 seconds
+    ####################  + Contact - Contact  ##########################################
+    #Then i navigate to current folio using url
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    #And i click '+ Contact' button
+    #And i wait for 7 seconds
+    #And i select 'Structured Investigation Contact' radiobutton
+    #And i wait for 5 seconds
+    #And i click 'Next' button
+    #And i wait for 5 seconds
+    #And i enter 'TodayDate' in Date textbox
+    #And i wait for 5 seconds
+    #And i enter '12:00 AM' in Time textbox
+    #And i wait for 3 seconds
+    #And i select 0 position from On Behalf of Child inputdropdown New
+    #And i select 'Home' value in Location dropdown
+    #And i wait for 5 seconds
+    #And i select 'In-Person' value in Method dropdown
+    #And i wait for 5 seconds
+    #And i select 'Completed' value in Contact Status dropdown
+    #And i wait for 5 seconds
+    #And i select 0 position from Participant inputdropdown New
+    #And i wait for 5 seconds
+    #And i select 0 position from Participant inputdropdown New
+    #And i wait for 5 seconds
+    #And i select 'Yes' value in Is the physical home environment safe? dropdown
+    #And i enter LargeRandomText in 'Investigation Introduction' textarea with length '10'
+    #And i enter LargeRandomText in 'Indian Ancestry' textarea with length '10'
+    #And i select 'Finalized' value in Documentation Status dropdown
+    #And i verify 'Save' button is present on page
+    #And i wait for 3 seconds
+    #And i click 'Save' button
+    #And i wait for 7 seconds
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    ########################  Assignments ##########################################
+    #And i wait for 7 seconds
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #And i click on 'Assignments' Partial link
+    #And i wait for 5 seconds
+    #And i click 'New' link
+    #And i wait for 5 seconds
+    #And i enter 'TodayDate' in Start Date textbox
+    #And i enter and select 'ersupervisor contracosta' value from property file in Person searchbox
+    #And i select 'Court Worker' value in Worker Role dropdown
+    #And i click 'Save' button
+    #And i wait for 10 seconds
+    #Then i navigate to current folio using url
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    ########################## Related Folios ##########################################
+    #And i click 'Related Folios' subtab
+    #And i wait for 10 seconds
+    #And i click 'Associate' button
+    #And i wait for 5 seconds
+    #And i enter and select <associatedFolio> value in Associated Folio Ref. searchbox
+    #And i wait for 5 seconds
+    #And i click 'Save' button
+    #And i wait for 5 seconds
+    #And i refresh the page
+    #And i wait for 5 seconds
+    ######################## Submit for approval  #############################
+    #And i click 'Show more actions' button
+    #And i click 'Submit for Approval' link
+    #And i wait for 5 seconds
+    #And i click 'Yes' button
+    #And i wait for 5 seconds
+    #And i click 'Submit' button
+    #And i wait for 5 seconds
+    #And i click 'Finish' button
+    #And i wait for 5 seconds
+    #########################  Recalling the Folio record  ################
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    #And i click 'Approval/Audit' subtab
+    #And i wait for 3 seconds
+    #And i scroll to down by 200 pixels
+    #And i wait for 3 seconds
+    #And i scroll to down by 200 pixels
+    #And i wait for 3 seconds
+    #And i click 'Recall' button
+    #And i wait for 6 seconds
+    #And i click Recall button 2
+    #And i wait for 6 seconds
+    #And i verify 'Recalled' text is present on page
+    #And i wait for 10 seconds
+    ###################  Resubmitting for approval  ############
+    #And i click 'Show more actions' button
+    #And i wait for 10 seconds
+    #And i click 'Submit for Approval' link
+    #And i wait for 5 seconds
+    #And i click 'Yes' button
+    #And i wait for 3 seconds
+    #And i click 'Submit' button
+    #And i wait for 6 seconds
+    #And i click 'Finish' button
+    #And i wait for 6 seconds
+    #And i click on Log Out
+    #And i wait for 5 seconds
+    #########################  Logging in after Resubmitting Folio  ##############################
+    #Given Application is in Login Page
+    #When i logged in as '<User>' for V1 application
+    #And i wait for 5 seconds
+    #Then i navigate to current folio using url
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    ############################# No Edit access for Allegation  #############################
+    #And i click on 'Allegations' Partial link
+    #And i wait for 2 seconds
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #And i click first Allegation ID from related Allegations table of Allegations page
+    #And i wait for 5 seconds
+    #And i scroll to down by 200 pixels
+    #And i wait for 3 seconds
+    #And i scroll to down by 200 pixels
+    #And i wait for 3 seconds
+    #And i verify 'Allegation Conclusion' dropdown is disabled
+    #And i verify 'Allegation Conclusion Rationale' textbox is disabled
+    #And i wait for 5 seconds
+    #Then i navigate to current folio using url
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    #And i click on 'Allegations' Partial link
+    #And i wait for 5 seconds
+    #And i click 'New' button
+    #And i wait for 5 seconds
+    #And i verify 'This record is locked while pending approval. Please recall your submission if modifications are needed.' text is present on page
+    #Then i navigate to current folio using url
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    ########################### No Edit access for Disposition  #############################
+    #And i wait for 5 seconds
+    #And i click on 'Disposition' Partial link
+    #And i wait for 2 seconds
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #And i click first Disposition ID from related Disposition table of Disposition page
+    #And i set page to view disposition
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #And i click 'Edit Closure Date' button
+    #And i wait for 5 seconds
+    #And i enter future date in 'MM/dd/YYYY' format for -2 days from today in Closure Date textbox
+    #And i wait for 2 seconds
+    #And i select 'Do Not Promote to Case' value in Disposition dropdown
+    #And i enter 'randomText' in Rationale textarea
+    #And i select 'Situation Stabilized' value in Disposition Closure Reason Type dropdown
+    #And i wait for 2 seconds
+    #And i click 'Save' button
+    #And i wait for 5 seconds
+    #And i verify 'This record is locked while pending approval. Please recall your submission if modifications are needed.' text is present on page
+    #And i wait for 5 seconds
+    #And i click 'Cancel' button
+    #And i wait for 5 seconds
+    #Then i navigate to current folio using url
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    ############################## Create access for + Tribal Inquiry & Collaboration  ##########################################
+    #And i click '+ Tribal Inquiry & Collaboration' button
+    #And i wait for 5 seconds
+    #Then i verify 'Contact Start Date/ Time' text is present on page
+    #Then i verify 'Contact End Date/ Time' text is present on page
+    #And i enter 'TodayDate' in Date textbox
+    #And i wait for 2 seconds
+    #And i enter '1:00 AM' in Time textbox
+    #And i wait for 2 seconds
+    #And i select 'Reporting Party' value in Participant Type dropdown
+    #And i wait for 2 seconds
+    #And i enter and select 'Alleged Victim' value in On Behalf of Child searchbox
+    #And i wait for 2 seconds
+    #And i select 'Tribal Inquiry' value in Contact Purpose dropdown
+    #And i wait for 2 seconds
+    #And i select 'Phone' value in Method dropdown
+    #And i wait for 2 seconds
+    #And i select 'In Draft' value in Documentation Status dropdown
+    #And i wait for 2 seconds
+    #And i select 'Completed' value in Contact Status dropdown
+    #And i wait for 2 seconds
+    #And i select 'Continue to Inquire' value in Continued ICWA Inquiry dropdown
+    #And i wait for 2 seconds
+    #And i enter randomText in Narrative textarea of Tribal Inquiry
+    #And i wait for 2 seconds
+    #And i click 'Save' button
+    #And i wait for 2 seconds
+    #And i verify 'Tribal Inquiry & Collaboration Record Created/ Updated Successfully!' toast message
+    #And i wait for 5 seconds
+    #########################  Create access for Structured Contact  ##########################################
+    #Then i navigate to current folio using url
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    #And i click '+ Contact' button
+    #And i wait for 7 seconds
+    #And i select 'Structured Investigation Contact' radiobutton
+    #And i wait for 5 seconds
+    #And i click 'Next' button
+    #And i wait for 5 seconds
+    #And i enter 'TodayDate' in Date textbox
+    #And i wait for 5 seconds
+    #And i enter '12:00 AM' in Time textbox
+    #And i wait for 3 seconds
+    #And i select 0 position from On Behalf of Child inputdropdown New
+    #And i select 'Home' value in Location dropdown
+    #And i wait for 5 seconds
+    #And i select 'In-Person' value in Method dropdown
+    #And i wait for 5 seconds
+    #And i select 'Completed' value in Contact Status dropdown
+    #And i wait for 5 seconds
+    #And i select 0 position from Participant inputdropdown New
+    #And i wait for 5 seconds
+    #And i select 'Yes' value in Is the physical home environment safe? dropdown
+    #And i enter LargeRandomText in 'Investigation Introduction' textarea with length '10'
+    #And i enter LargeRandomText in 'Indian Ancestry' textarea with length '10'
+    #And i select 'Finalized' value in Documentation Status dropdown
+    #And i verify 'Save' button is present on page
+    #And i wait for 3 seconds
+    #And i click 'Save' button
+    #And i verify 'Contact Log Record Created/ Updated Successfully!' toast message
+    #And i wait for 7 seconds
+    #And i refresh the page
+    #And i wait for 7 seconds
+    #And i set page to view folio
+    ########################### No Edit access for + Tribal Inquiry & Collaboration  ##########################################
+    #And i click 'Contact Log & Tribal Inquiry' link
+    #And i wait for 20 seconds
+    #And i scroll to down by 200 pixels
+    #And i wait for 5 seconds
+    #And i scroll to down by 200 pixels
+    #And i wait for 20 seconds
+    #And i click 'Tribal Inquiry & Collaboration' link
+    #And i wait for 5 seconds
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    #And i capture record number 1 of Contact ID column from related Contact Log table of View folio page
+    #And i click saved record of Contact ID column from View folio page
+    #And i wait for 10 seconds
+    #And i click 'Edit' button
+    #And i wait for 5 seconds
+    #And i verify 'This Screening has been approved and is now locked. You cannot edit/delete this record.' text is present on page
+    #And i refresh the page
+    #Then i navigate to current folio using url
+    #And i wait for 5 seconds
+    #And i click 'Contact Log & Tribal Inquiry' link
+    #And i wait for 20 seconds
+    #And i scroll to down by 200 pixels
+    #And i wait for 5 seconds
+    #And i scroll to down by 200 pixels
+    #And i wait for 20 seconds
+    #And i click 'Tribal Inquiry & Collaboration' link
+    #And i wait for 5 seconds
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    #And i capture record number 2 of Contact ID column from related Contact Log table of View folio page
+    #And i click saved record of Contact ID column from View folio page
+    #And i wait for 10 seconds
+    #And i click 'Edit' button
+    #And i wait for 5 seconds
+    #And i verify 'This record is locked while pending approval. Please recall your submission if modifications are needed.' text is present on page
+    #And i set page to view folio
+    #########################  No Edit access for + Contact  ##########################################
+    #Then i navigate to current folio using url
+    #And i wait for 5 seconds
+    #And i click 'Contact Log & Tribal Inquiry' link
+    #And i wait for 20 seconds
+    #And i scroll to down by 200 pixels
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    #And i capture record number 1 of Contact ID column from related Contact Log table of view folio page
+    #And i click saved record of Contact ID column from view folio page
+    #And i wait for 10 seconds
+    #And i click 'Edit' button
+    #And i wait for 5 seconds
+    #And i verify 'This Screening has been approved and is now locked. You cannot edit/delete this record.' text is present on page
+    #And i refresh the page
+    #Then i navigate to current folio using url
+    #And i wait for 5 seconds
+    #And i click 'Contact Log & Tribal Inquiry' link
+    #And i wait for 20 seconds
+    #And i scroll to down by 200 pixels
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    #And i capture record number 2 of Contact ID column from related Contact Log table of view folio page
+    #And i click saved record of Contact ID column from view folio page
+    #And i wait for 10 seconds
+    #And i click 'Edit' button
+    #And i wait for 5 seconds
+    #And i verify 'This record is locked while pending approval. Please recall your submission if modifications are needed.' text is present on page
+    #Then i navigate to current folio using url
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    ######################### No Edit access for Assignments ##########################################
+   #And i wait for 7 seconds
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #And i click on 'Assignments' Partial link
+    #And i wait for 5 seconds
+    #And i click 'New' button
+    #And i wait for 5 seconds
+    #And i enter 'TodayDate' in Start Date textbox
+    #And i enter and select 'Hotline Supervisor ContraCosta' value from property file in Person searchbox
+    #And i select 'Court Worker' value in Worker Role dropdown
+    #And i click 'Save' button
+    #And i wait for 5 seconds
+    #Then i verify 'This record is locked while pending approval. Please recall your submission if modifications are needed.' text is present on page
+    #And i wait for 5 seconds
+    #And i click 'Cancel' button
+    #And i wait for 5 seconds
+    #Then i navigate to current folio using url
+    #And i wait for 5 seconds
+    #And i click on 'Assignments' Partial link
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    #And i wait for 5 seconds
+    #And i click first Assignment ID from related Assignments table of view folio page
+    #And i wait for 3 seconds
+    #And i click 'Edit Start Date' button
+    #And i wait for 5 seconds
+    #And i enter 'TodayDate' in Start Date textbox
+    #And i enter 'randomText' in Description textarea
+    #And i select 'Clerical Support' value in Worker Role dropdown
+    #And i click 'Save' button
+    #And i wait for 5 seconds
+    #Then i verify 'This record is locked while pending approval. Please recall your submission if modifications are needed.' text is present on page
+    #And i click 'Cancel' button
+    #Then i navigate to current folio using url
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    #And i wait for 7 seconds
+    ########################## No Edit access for Related Folios ##########################################
+    #And i wait for 5 seconds
+    #And i click 'Related Folios' subtab
+    #And i wait for 10 seconds
+    #And i verify 'Associate' button is disabled
+    #And i wait for 5 seconds
+    #And i scroll to down by 200 pixels
+    #And i wait for 10 seconds
+    #And i set page to view folio
+    #Then i verify 'Unassociate' link is not present on page
+    #And i wait for 5 seconds
+    ##########################No Edit access for Folio Person ##########################################
+    #And i refresh the page
+    #And i wait for 5 seconds
+    #And i click on 'Persons' Partial link
+    #And i wait for 5 seconds
+    #And i capture record number 1 of Folio Person column from related Persons table of Persons page
+    #And i click saved record of Folio Person column from Persons page
+    #And i wait for 10 seconds
+    #And i click 'Validate Person' button
+    #And i wait for 10 seconds
+    #Then i verify 'This record is locked while pending approval. Please recall your submission if modifications are needed.' text is present on page
+    #And i wait for 5 seconds
+    #Then i navigate to current folio using url
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    #And i click on 'Persons' Partial link
+    #And i wait for 5 seconds
+    #And i click 'New' button
+    #And i wait for 5 seconds
+    #And i verify 'This record is locked while pending approval. Please recall your submission if modifications are needed.' text is present on page
+    #And i wait for 5 seconds
+    #Then i navigate to current folio using url
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    ########################## No Edit access for CSE ##########################################
+    #And i click 'Commercial Sexual Exploitation (CSE)' button
+    #And i wait for 5 seconds
+    #And i select 'SelectFolioPerson' radiobutton
+    #And i click 'Next' button
+    #And i wait for 5 seconds
+    #And i select 'At Risk' value in next CSE Type dropdown
+    #And i wait for 5 seconds
+    #And i enter 'TodayDate' in next Start Date textbox
+    #And i wait for 5 seconds
+    #And i click 'Save' button
+    #And i wait for 10 seconds
+    #And i verify 'You cannot add/update CSE information while the Investigation record is pending approval. To add/update CSE information, first recall the approval request.' text is present on page
+    #And i wait for 5 seconds
+    #Then i navigate to current folio using url
+    #And i wait for 5 seconds
+    #And i set page to view folio
+    ########################## Not able to Submit for Approval again ##########################################
+    #And i click 'Show more actions' button
+    #And i wait for 5 seconds
+    #And i click 'Submit for Approval' link
+    #And i wait for 10 seconds
+    #And i verify 'This record has already been submitted for approval.' text is present on page
+    #And i wait for 5 seconds
+    #And i click 'Finish' button
+    #And i wait for 5 seconds
+    #And i click on Log Out
+    #And i wait for 5 seconds
+#
+    #Examples: 
+      #| User                           |    associatedFolio   |
+      #| ERWorkerContraCosta            |    '00002503'        |
+      #| ERSupervisorContraCostaUserTwo |    '00002503'        |
+      | ERWorkerContraCosta            |    '00007423'        |
+      | ERSupervisorContraCostaUserTwo |    '00007423'        |
