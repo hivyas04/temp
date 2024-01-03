@@ -1,0 +1,558 @@
+@testT647
+Scenario Outline: CARESV1-T647_283 Verify that ER Worker and ER Supervisor have the ability to add an addendum to the Contact Log & Tribal Inquiry records
+  When i logged in as <HotlineUser> for V1 application
+	And i wait for 15 seconds
+  And verify i am on Home page
+  And i navigate to Screenings page
+  And i click 'New' button
+  And i wait for 10 seconds
+########  Initial Screening Information  ####################################
+  When i enter Initial screening information details  
+  | reasonForCall            | callerInformation     |
+  | Abuse/Neglect Referral   | Anonymous             |
+  And i wait for 3 seconds
+	And i click 'Save and Proceed' button
+	And i wait for 5 seconds	
+  And i set page to view screening
+  And i capture SCR ID from view screening page  
+  And i capture screening url from view screening page
+#########  Add Person(s)  #############################
+	And i enter person 1 deatils with role as 'Alleged Perpetrator' in Screening
+  And i scroll to Down by 200 pixels
+	And i wait for 5 seconds
+	And i click '+ Add Row' button
+	And i wait for 5 seconds
+	And i scroll to Down by 200 pixels
+	And i enter person 2 deatils with role as 'Alleged Victim' in Screening
+	And i click 'Save and Proceed' button
+	And i wait for 5 seconds  
+#########  Add Addresss(es)  #############################
+  And i refresh the page
+  And i wait for 3 seconds
+	And i scroll on page to Address Type dropdown
+	And i wait for 5 seconds
+	And i select 'Location of Child(ren)' value in Address Type dropdown
+	And i wait for 2 seconds
+  And i enter 'randomText' in Address Line 1 textbox
+  And i wait for 2 seconds
+  And i enter 'Oakland' in City textbox
+  And i wait for 2 seconds
+  And i enter '94763' in Zip Code textbox
+  And i wait for 2 seconds
+  And i click 'Search' button
+  And i wait for 5 seconds
+  And i click 'Validate Address' button
+  And i wait for 5 seconds
+  And i select 'userEnteredAddress' radiobutton
+  And i wait for 5 seconds
+  And i click 'Save and Proceed' button
+  And i wait for 5 seconds  
+  And i scroll to Up by 600 pixels  
+  And i wait for 5 seconds
+  And i set page to view screening
+#########  Add Allegation(s) #############################
+	And i select stored 'Alleged Victim' value from constant file in Select Alleged Victim dropdown
+	And i select stored 'Alleged Perpetrator' value from constant file in Select Alleged Perpetrator dropdown			
+	And i select 'Caretaker Absence/Incapacity' value in Allegation Type dropdown
+	And i wait for 2 seconds
+	And i move Abandonment values from Allegations Subtype available list to chosen list
+	And i click 'Save and Proceed' button
+	And i wait for 10 seconds
+##########  Identify Safety Alert(s)  #############################
+  And i select 'Threat or Assault on Staff Member' checkbox
+  And i wait for 5 seconds
+	And i click 'Save and Proceed' button
+	And i wait for 10 seconds
+##########  SDM Hotline Tool  #############################
+	And i select 'Immediate' value in Response Type dropdown
+	And i wait for 2 seconds
+	And i click 'Save and Proceed' button
+	And i wait for 5 seconds	
+	And i refresh the page
+	And i wait for 5 seconds
+##########  Tribal Inquiry & Collaboration  #############################
+	And i click 'Tribal Inquiry & Collaboration' link
+	And i wait for 5 seconds
+	And i scroll to Down by 200 pixels
+	And i enter 'TodayDate' in Date textbox
+  And i enter '12:00 AM' in Time textbox
+  And i select 'Reporting Party' value in Participant Type dropdown
+  And i enter and select 'Alleged Victim' value in On Behalf of Child searchbox
+  And i wait for 2 seconds
+  And i select 'Phone' value in Method dropdown
+  And i select 'Tribal Inquiry' value in Contact Purpose dropdown
+  And i select 'Completed' value in Contact Status dropdown  
+  And i enter and select 'Hotline Staff ContraCosta' value from property file in Staff Person searchbox
+  And i scroll to Down by 100 pixels
+  And i select 'Continue to Inquire' value in Initial ICWA Inquiry dropdown
+  And i scroll to Down by 100 pixels
+  And i click 'Save and Proceed' button
+  And i wait for 5 seconds
+#########  +ERR Doc  #############################
+  And i generate ERR document
+################# + Contact - Contact  #############################
+  And i click '+ Contact' button
+  And i wait for 5 seconds
+  Then i verify 'Contact Start Date/ Time' text is present on page
+  Then i verify 'Contact End Date/ Time' text is present on page
+  And i enter 'TodayDate' in Date textbox
+  And i wait for 2 seconds
+  And i enter '12:00 AM' in Time textbox
+  And i wait for 2 seconds
+  And i select 'Conduct Client Evaluation' value in Contact Purpose dropdown
+  And i wait for 2 seconds
+  And i enter and select 'Alleged Victim' value in On Behalf of Child searchbox
+  And i wait for 2 seconds
+  And i enter and select 'Hotline Staff ContraCosta' value from property file in Staff Person searchbox
+  And i wait for 2 seconds
+  And i select 'In-Person' value in Method dropdown
+  And i wait for 2 seconds
+  And i enter and select 'Alleged Perpetrator' value in Participant searchbox
+  And i wait for 2 seconds
+  And i enter and select 'Alleged Victim' value in Participant searchbox
+  And i wait for 2 seconds
+  And i select 'Completed' value in Contact Status dropdown
+  And i wait for 2 seconds
+  And i select 'Home' value in Location dropdown
+  And i wait for 3 seconds
+  And i click 'Save' button
+  And i wait for 8 seconds  
+  ################# + Contact - Contact  #############################
+  And i click '+ Contact' button
+  And i wait for 5 seconds
+  Then i verify 'Contact Start Date/ Time' text is present on page
+  Then i verify 'Contact End Date/ Time' text is present on page
+  And i enter 'TodayDate' in Date textbox
+  And i wait for 2 seconds
+  And i enter '12:00 AM' in Time textbox
+  And i wait for 2 seconds
+  And i select 'Conduct Client Evaluation' value in Contact Purpose dropdown
+  And i wait for 2 seconds
+  And i enter and select 'Alleged Victim' value in On Behalf of Child searchbox
+  And i wait for 2 seconds
+  And i enter and select 'Hotline Staff ContraCosta' value from property file in Staff Person searchbox
+  And i wait for 2 seconds
+  And i select 'In-Person' value in Method dropdown
+  And i wait for 2 seconds
+  And i enter and select 'Alleged Perpetrator' value in Participant searchbox
+  And i wait for 2 seconds
+  And i enter and select 'Alleged Victim' value in Participant searchbox
+  And i wait for 2 seconds
+  And i select 'Completed' value in Contact Status dropdown
+  And i wait for 2 seconds
+  And i select 'Home' value in Location dropdown
+  And i wait for 3 seconds
+  And i click 'Save' button
+  And i wait for 8 seconds  
+#########  Supervisor Review/Promotion  #############################
+  Then i navigate to current screening using url
+  And i wait for 5 seconds
+  And i click Submit for Supervisor Review link
+  And i scroll to down by 200 pixels
+  And i wait for 2 seconds
+  And i set page to view screening  
+  And i wait for 2 seconds
+  And i enter and select 'Hotline Supervisor ContraCosta' value from property file in Approval Supervisor searchbox  
+  And i click 'Save and Proceed' button
+  And i verify 'Record(s) saved successfully' toast message
+  And i wait for 5 seconds
+#########  Validate screening person - 1  ################# 
+  And i scroll to down by 300 pixels
+  And i wait for 5 seconds
+  And i click 'relatedListScreeningPersons' element
+	And i wait for 5 seconds
+	And i refresh the page
+	And i wait for 5 seconds
+	And i capture record number 1 of Screening Person column from related Screening Persons table of Screening Persons page
+  And i click saved record of Screening Person column from Screening Persons page
+  And i refresh the page
+  And i wait for 5 seconds
+  And i click 'Validate Person' button
+  And i wait for 5 seconds
+  And i click 'Search' button
+  And i wait for 5 seconds
+  And i click 'New Person' button
+  And i wait for 5 seconds
+  And i select 'Male' value in Sex at Birth dropdown
+  And i wait for 3 seconds
+  And i click 'Save' button
+  And i wait for 3 seconds
+  And i verify 'Screening Person record has been attached' toast message
+############  Validate screening person - 2 ##################	
+	And i wait for 2 seconds  
+  Then i navigate to current screening using url 
+  And i wait for 5 seconds
+  And i refresh the page
+	And i wait for 5 seconds  	
+  And i scroll to down by 400 pixels
+  And i click 'relatedListScreeningPersons' element
+	And i wait for 5 seconds	  
+  And i capture record number 2 of Screening Person column from related Screening Persons table of Screening Persons page
+  And i click saved record of Screening Person column from Screening Persons page
+  And i refresh the page
+  And i wait for 5 seconds	
+  And i click 'Validate Person' button
+  And i wait for 5 seconds
+  And i click 'Search' button
+  And i wait for 5 seconds
+  And i click 'New Person' button
+  And i wait for 5 seconds
+  And i select 'Male' value in Sex at Birth dropdown
+  And i click 'Save' button
+  And i wait for 3 seconds
+  Then i navigate to current screening using url 
+  And i wait for 5 seconds
+#############  Submit For Approval  #############################
+  And i click 'Submit For Approval' button
+  And i wait for 5 seconds
+  And i refresh the page
+  And i wait for 5 seconds
+  And i enter 'Submitting for approval' in Comments textarea
+  And i wait for 2 seconds
+  And i click 'Submit' button
+  And i wait for 5 seconds
+  And i verify 'Screening has been submitted for approval.' text is present on page
+  And i click 'Close' button	
+	And i wait for 5 seconds
+	And i click on Log Out
+	And i wait for 5 seconds
+##############  Approval  #####################################
+  When i logged in as <HotlineSupervisor> for V1 application
+	And i wait for 5 seconds	
+  Then i click on the notification for SCR ID to approve
+  And i wait for 5 seconds
+	And i verify 'Approve' text is present on page
+  Then i Approve the approval request
+	And i set page to view approval
+	And i refresh the page
+	And i wait for 5 seconds  
+	And i verify 'Approved' text is present on page
+	And i verify 'Approved' text for Status element
+	And i click on Log Out
+	And i wait for 5 seconds	
+###############  Assignment  ###################################
+  When i logged in as <HotlineUser> for V1 application
+	And i wait for 5 seconds	
+  And i navigate to Screenings page
+  And i wait for 5 seconds
+  Then i navigate to current screening using url
+  And i wait for 5 seconds
+  And i refresh the page
+  And i wait for 7 seconds
+  And i enter and select <primaryWorker> value from property file in Primary Worker searchbox
+  And i wait for 5 seconds
+  And i click 'Save' button
+  And i wait for 5 seconds
+  And i refresh the page
+  And i wait for 5 seconds
+  And i set page to view screening
+  And i wait for 3 seconds
+  And i capture Folio ref from view screening page
+  And i capture Folio ref url from view screening page 
+  And i click on Log Out
+###################  Logging in as user to verify  #############################
+	And i wait for 5 seconds	
+  When i logged in as <ERUser> for V1 application
+	And i wait for 5 seconds	
+  Then i navigate to current folio using url 	
+  And i set page to view folio  
+  And i wait for 5 seconds
+  And i click 'Contact Log & Tribal Inquiry' link
+  And i wait for 5 seconds
+  And i scroll to down by 200 pixels
+  And i click 'Contact Log' relatedlistheaderlink
+  And i wait for 3 seconds
+  And i refresh the page
+  And i wait for 5 seconds
+  And i capture record number 1 of Contact ID column from related Contact Log table of contact log page
+  And i click saved record of Contact ID column from contact log page
+  And i wait for 2 seconds
+  And i refresh the page
+  And i wait for 5 seconds
+################  Add and verify Addendum  #############################
+  And i scroll to Down by 600 pixels 
+	And i wait for 5 seconds
+	And i click 'Addendums#New' relatedbtn
+	And i wait for 8 seconds
+	And i verify 'Addendum ID' text is present on page
+	And i verify 'Addendum Narrative' textarea is present on page
+	And i verify 'Documentation Status' dropdown is present on page
+	And i verify 'Cancel' button is present on page
+	And i verify 'Save & New' button is present on page
+	And i verify 'Save' button is present on page
+	And i click 'Save' button
+	And i verify 'Complete this field.' text is present on page
+	And i enter 'MediumRandomText' in Addendum Narrative textarea
+	And i wait for 2 seconds
+	And i select 'In Draft' value in Documentation Status dropdown
+	And i wait for 2 seconds
+	And i click 'Save & New' button
+  And i wait for 3 seconds
+  And i click 'Cancel' button
+	And i wait for 3 seconds
+	And i scroll to Down by 600 pixels 
+	And i click 'Addendums' relatedlistheaderlink
+	And i wait for 2 seconds
+  And i refresh the page
+  And i wait for 5 seconds
+  And i capture record number 1 of Addendum ID column from related Addendums table of addendums page
+  Then i verify column names of Addendums section on Addendums page
+   | Addendum ID | Addendum Narrative | Documentation Status | Created By | Created Date |
+  And i wait for 2 seconds
+  And i click saved record of Addendum ID column from addendums page
+  And i wait for 8 seconds
+	And i verify 'Information' text is present on page
+	And i verify 'Contact information' text is present on page
+	And i verify 'System Information' text is present on page
+	And i verify 'Edit Addendum Narrative' button is present on page
+	And i wait for 3 seconds
+	And i click 'Edit Addendum Narrative' button
+	And i wait for 3 seconds
+	And i clears the text in Addendum Narrative textarea
+	And i wait for 3 seconds
+	And i click 'Save' button
+	And i wait for 3 seconds
+	And i click 'Close error dialog' button
+  And i wait for 3 seconds
+	And i verify 'Complete this field.' text is present on page
+	And i enter 'randomText' in Addendum Narrative textarea
+	And i wait for 2 seconds
+	And i click 'Save' button
+	And i wait for 3 seconds	
+	#####################  Tribal Inquiry & Collaboration  #############################
+  Then i navigate to current folio using url 	
+  And i set page to view folio  
+  And i wait for 5 seconds
+  And i click 'Contact Log & Tribal Inquiry' link
+  And i wait for 5 seconds
+  And i scroll to down by 400 pixels
+  And i wait for 5 seconds
+  And i click 'Tribal Inquiry & Collaboration' relatedlistheaderlink
+  And i wait for 2 seconds
+  And i refresh the page
+  And i wait for 3 seconds
+  And i capture record number 1 of Contact ID column from related Contact Log table of contact log page
+  And i click saved record of Contact ID column from contact log page
+  And i wait for 2 seconds
+  And i refresh the page
+  And i wait for 5 seconds
+  ################  Add and verify Addendum  #############################
+  And i scroll to Down by 600 pixels 
+	And i wait for 5 seconds
+	And i click 'Addendums#New' relatedbtn
+	And i wait for 8 seconds
+	And i verify 'Addendum ID' text is present on page
+	And i verify 'Addendum Narrative' textarea is present on page
+	And i verify 'Documentation Status' dropdown is present on page
+	And i verify 'Cancel' button is present on page
+	And i verify 'Save & New' button is present on page
+	And i verify 'Save' button is present on page
+	And i click 'Save' button
+	And i verify 'Complete this field.' text is present on page
+	And i enter 'MediumRandomText' in Addendum Narrative textarea
+	And i wait for 2 seconds
+	And i select 'In Draft' value in Documentation Status dropdown
+	And i wait for 2 seconds
+	And i click 'Save & New' button
+  And i wait for 3 seconds
+  And i click 'Cancel' button
+	And i wait for 3 seconds
+	And i scroll to Down by 600 pixels 
+	And i click 'Addendums' relatedlistheaderlink
+	And i wait for 2 seconds
+  And i refresh the page
+  And i wait for 5 seconds
+  And i capture record number 1 of Addendum ID column from related Addendums table of addendums page
+  Then i verify column names of Addendums section on Addendums page
+   | Addendum ID | Addendum Narrative | Created By | Created Date |
+  And i wait for 2 seconds
+  And i click saved record of Addendum ID column from addendums page
+  And i wait for 8 seconds
+	And i verify 'Information' text is present on page
+	And i verify 'Contact information' text is present on page
+	And i verify 'System Information' text is present on page
+	And i verify 'Edit Addendum Narrative' button is present on page
+	And i wait for 3 seconds
+	And i click 'Edit Addendum Narrative' button
+	And i wait for 3 seconds
+	And i clears the text in Addendum Narrative textarea
+	And i wait for 3 seconds
+	And i click 'Save' button
+	And i wait for 3 seconds
+	And i click 'Close error dialog' button
+  And i wait for 3 seconds
+	And i verify 'Complete this field.' text is present on page
+	And i enter 'randomText' in Addendum Narrative textarea
+	And i wait for 2 seconds
+	And i click 'Save' button
+	And i wait for 3 seconds
+##########################  +Contact Log ############################################################
+  Then i navigate to current folio using url 	
+  And i set page to view folio  
+  And i wait for 5 seconds
+  And i click 'Contact Log & Tribal Inquiry' link
+  And i wait for 5 seconds
+  And i scroll to down by 200 pixels
+  And i click 'Contact Log' relatedlistheaderlink
+  And i wait for 3 seconds
+  And i refresh the page
+  And i wait for 5 seconds
+  And i capture record number 2 of Contact ID column from related Contact Log table of contact log page
+  And i click saved record of Contact ID column from contact log page
+  And i wait for 2 seconds
+  And i refresh the page
+  And i wait for 5 seconds
+ #################  Add and verify Addendum  #############################
+  And i scroll to Down by 600 pixels 
+	And i wait for 5 seconds
+	And i click 'Addendums#New' relatedbtn
+	And i wait for 8 seconds
+	And i verify 'Addendum ID' text is present on page
+	And i verify 'Addendum Narrative' textarea is present on page
+	And i verify 'Documentation Status' dropdown is present on page
+	And i verify 'Cancel' button is present on page
+	And i verify 'Save & New' button is present on page
+	And i verify 'Save' button is present on page
+	And i click 'Save' button
+	And i verify 'Complete this field.' text is present on page
+	And i enter 'MediumRandomText' in Addendum Narrative textarea
+	And i wait for 2 seconds
+	And i select 'In Draft' value in Documentation Status dropdown
+	And i wait for 2 seconds
+	And i click 'Save & New' button
+  And i wait for 4 seconds
+  And i click 'Cancel' button
+	And i wait for 3 seconds
+	And i scroll to Down by 600 pixels 
+	And i click 'Addendums' relatedlistheaderlink
+	And i wait for 2 seconds
+  And i refresh the page
+  And i wait for 8 seconds
+  And i capture record number 1 of Addendum ID column from related Addendums table of addendums page
+  Then i verify column names of Addendums section on Addendums page
+   | Addendum ID | Addendum Narrative | Documentation Status | Created By | Created Date |
+  And i wait for 2 seconds
+  And i click saved record of Addendum ID column from addendums page
+  And i wait for 8 seconds
+	And i verify 'Information' text is present on page
+	And i verify 'Contact information' text is present on page
+	And i verify 'System Information' text is present on page
+	And i verify 'Edit Addendum Narrative' button is present on page
+	And i wait for 3 seconds
+	And i click 'Edit Addendum Narrative' button
+	And i wait for 3 seconds
+	And i clears the text in Addendum Narrative textarea
+	And i wait for 3 seconds
+	And i click 'Save' button
+	And i wait for 3 seconds
+	And i click 'Close error dialog' button
+  And i wait for 3 seconds
+	And i verify 'Complete this field.' text is present on page
+	And i enter 'randomText' in Addendum Narrative textarea
+	And i wait for 2 seconds
+	And i click 'Save' button
+	And i wait for 3 seconds	
+############################  + Tribal Inquiry & Collaboration  ##########################################
+  And i refresh the page
+  And i wait for 5 seconds
+  Then i navigate to current folio using url
+  And i wait for 5 seconds
+  And i set page to view folio
+  And i wait for 5 seconds
+  And i click '+ Tribal Inquiry & Collaboration' button
+  And i wait for 5 seconds
+  Then i verify 'Contact Start Date/ Time' text is present on page
+  Then i verify 'Contact End Date/ Time' text is present on page
+  And i wait for 3 seconds
+  And i enter 'TodayDate' in Date textbox
+  And i wait for 2 seconds
+  And i enter '12:00 AM' in Time textbox
+  And i wait for 2 seconds
+  And i select 'Reporting Party' value in Participant Type dropdown
+  And i wait for 2 seconds
+  And i enter and select 'Alleged Victim' value in On Behalf of Child searchbox
+  And i wait for 2 seconds
+  And i select 'Tribal Inquiry' value in Contact Purpose dropdown
+  And i wait for 2 seconds
+  And i select 'Phone' value in Method dropdown
+  And i wait for 2 seconds
+  And i select 'In Draft' value in Documentation Status dropdown
+  And i wait for 2 seconds
+  And i select 'Completed' value in Contact Status dropdown
+  And i wait for 2 seconds
+  And i select 'Continue to Inquire' value in Continued ICWA Inquiry dropdown
+  And i wait for 5 seconds
+  And i enter randomText in Narrative textarea of Tribal Inquiry
+  And i wait for 2 seconds
+  And i click 'Save' button
+  And i wait for 5 seconds
+  And i set page to view folio
+  And i wait for 5 seconds
+  And i click 'Contact Log & Tribal Inquiry' link
+  And i wait for 2 seconds
+  And i scroll to down by 400 pixels
+  And i click 'Tribal Inquiry & Collaboration' relatedlistheaderlink
+  And i wait for 5 seconds
+  And i refresh the page
+  And i wait for 5 seconds
+  And i capture record number 1 of Contact ID column from related Tribal Inquiry and Collaboration table of view folio page
+  And i click saved record of Contact ID column from view folio page
+  And i wait for 2 seconds
+  And i refresh the page
+  And i wait for 5 seconds
+	 ###################  Add and verify Addendum  #############################
+  And i scroll to Down by 600 pixels 
+	And i wait for 5 seconds
+	And i click 'Addendums#New' relatedbtn
+	And i wait for 8 seconds
+	And i verify 'Addendum ID' text is present on page
+	And i verify 'Addendum Narrative' textarea is present on page
+	And i verify 'Documentation Status' dropdown is present on page
+	And i verify 'Cancel' button is present on page
+	And i verify 'Save & New' button is present on page
+	And i verify 'Save' button is present on page
+	And i click 'Save' button
+	And i verify 'Complete this field.' text is present on page
+	And i enter 'MediumRandomText' in Addendum Narrative textarea
+	And i wait for 2 seconds
+	And i select 'In Draft' value in Documentation Status dropdown
+	And i wait for 2 seconds
+	And i click 'Save & New' button
+  And i wait for 3 seconds
+  And i click 'Cancel' button
+	And i wait for 3 seconds
+	And i scroll to Down by 600 pixels 
+	And i click 'Addendums' relatedlistheaderlink
+	And i wait for 2 seconds
+  And i refresh the page
+  And i wait for 5 seconds
+  And i capture record number 1 of Addendum ID column from related Addendums table of addendums page
+  Then i verify column names of Addendums section on Addendums page
+   | Addendum ID | Addendum Narrative | Created By | Created Date |
+  And i wait for 2 seconds
+  And i click saved record of Addendum ID column from addendums page
+  And i wait for 8 seconds
+	And i verify 'Information' text is present on page
+	And i verify 'Contact information' text is present on page
+	And i verify 'System Information' text is present on page
+	And i verify 'Edit Addendum Narrative' button is present on page
+	And i wait for 3 seconds
+	And i click 'Edit Addendum Narrative' button
+	And i wait for 3 seconds
+	And i clears the text in Addendum Narrative textarea
+	And i wait for 3 seconds
+	And i click 'Save' button
+	And i wait for 3 seconds
+	And i click 'Close error dialog' button
+  And i wait for 3 seconds
+	And i verify 'Complete this field.' text is present on page
+	And i enter 'randomText' in Addendum Narrative textarea
+	And i wait for 2 seconds
+	And i click 'Save' button
+	And i wait for 3 seconds	
+    
+	
+	Examples: 
+      | HotlineUser        |  ERUser                   | HotlineSupervisor       |  primaryWorker                |
+  #    | 'StaffContraCosta' | 'ERWorkerContraCosta'     | 'SupervisorContraCosta' | 'erworker contracosta'        |
+      | 'SupervisorContraCosta' | 'ERSupervisorContraCosta' | 'SupervisorContraCosta' | 'ersupervisor contracosta'    |
