@@ -1,0 +1,761 @@
+TestScript 775 
+
+#Author: Swathi.Gudduri@osi.ca.gov
+#Date Created: 07/12/2023
+#Date Modified: 11/13/2023
+#Date ## Author-Discription of Change ## Reason for Change
+#11/13/23 ## Megha-Script updated as part of maintenance ## Added validations for same persona non owner, direct supervisor,same persona different county and state read only users
+#Date ## Author-Discription of Change ## Reason for Change
+#11/17/2023####Swathi-Script updated as part of maintainence####	 Non-Mandated ReporterUpdated and Locators update
+@CARESV1_775 @adm-idm @thursday
+Feature: Validate the Document permissions for Folio Person Object for different profiles.
+
+  @Test775_part1
+  Scenario Outline: CARESV1-T775_1342 part-1 Verify the Document permissions for Person Object for different profiles
+    Given Application is in Login Page
+    When i logged in as 'StaffContraCosta' for V1 application
+    And i wait for 5 seconds
+    And verify i am on Home page
+    And i wait for 5 seconds
+    And i navigate to Screenings page
+    And i wait for 5 seconds
+    And i click 'New' button
+    And i wait for 8 seconds
+    #####  Initial Screening Information  #################
+    And i enter 'TodayDate' in Date textbox
+    And i select 'Abuse/Neglect Referral' value in Reason for the Call dropdown
+    And i enter 'randomText' in Screening Name textbox
+    And i enter 'randomText' in Screening Narrative for Div Paragraph Textbox in V1
+    And i select 'Caller (Non-Mandated Reporter)' radiobutton
+    And i select 'No' value in Call Back Required dropdown
+    And i click 'Save and Proceed' button
+    And i wait for 5 seconds
+    And i set page to view screening
+    And i capture SCR ID from view screening page
+    And i capture screening url from view screening page
+    And i wait for 5 seconds
+    #####  Add Person(s)  #################
+    And i enter person 1 deatils with role as 'Alleged Perpetrator' in Screening
+    And i scroll to Down by 200 pixels
+    And i wait for 5 seconds
+    And i click '+ Add Row' button
+    And i wait for 5 seconds
+    And i scroll to Down by 200 pixels
+    And i enter person 2 deatils with role as 'Alleged Victim' in Screening
+    And i click 'Save and Proceed' button
+    And i wait for 5 seconds
+    ######  Add Addresss(es)  #################
+    And i scroll on page to Address Type dropdown
+    And i wait for 5 seconds
+    And i select 'Location of Child(ren)' value in Address Type dropdown
+    And i enter 'randomText' in Address Line 1 textbox
+    And i enter 'Oakland' in City textbox
+    And i enter '94763' in Zip Code textbox
+    And i click 'Search' button
+    And i wait for 5 seconds
+    And i click 'Validate Address' button
+    And i wait for 5 seconds
+    And i select 'userEnteredAddress' radiobutton
+    And i wait for 5 seconds
+    And i click 'Save and Proceed' button
+    And i wait for 5 seconds
+    And i scroll to Up by 600 pixels
+    And i set page to view screening
+    And i wait for 5 seconds
+    ###### Add Allegation(s) #################
+    And i verify 'Allegation Type' text is present on page
+    And i verify 'Allegations Subtype' text is present on page
+    And i select stored 'Alleged Victim' value from constant file in Select Alleged Victim dropdown
+    And i select stored 'Alleged Perpetrator' value from constant file in Select Alleged Perpetrator dropdown
+    And i select 'Caretaker Absence/Incapacity' value in Allegation Type dropdown
+    And i wait for 2 seconds
+    And i move Abandonment,Parent Deceased, values from Allegations Subtype available list to chosen list
+    And i click 'Save and Proceed' button
+    And i wait for 5 seconds
+    ####  Identify Safety Alert(s)  #################
+    And i click 'Save and Proceed' button
+    And i wait for 10 seconds
+    And i refresh the page
+    And i wait for 9 seconds
+    ##### SDM Hotline Tool  #################
+    And i select 'Immediate' value in Response Type dropdown
+    And i wait for 7 seconds
+    And i click 'Save and Proceed' button
+    And i wait for 10 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    ######## Tribal Inquiry & Collaboration  #################
+    And i click 'Tribal Inquiry & Collaboration' link
+    And i wait for 5 seconds
+    And i scroll to Down by 200 pixels
+    And i enter 'TodayDate' in Date textbox
+    And i enter '12:00 AM' in Time textbox
+    And i select 'Reporting Party' value in Participant Type dropdown
+    And i enter and select 'Alleged Victim' value in On Behalf of Child searchbox
+    And i select 'In-Person' value in Method dropdown
+    And i select 'Tribal Inquiry' value in Contact Purpose dropdown
+    And i select 'Completed' value in Contact Status dropdown
+    And i enter and select 'Hotline Staff ContraCosta' value from property file in Staff Person searchbox
+    And i scroll to Down by 100 pixels
+    And i select 'Continue to Inquire' value in Initial ICWA Inquiry dropdown
+    And i scroll to Down by 100 pixels
+    And i select 'Home' value in Location dropdown
+    And i wait for 5 seconds
+    And i click 'Save and Proceed' button
+    And i wait for 5 seconds
+    And i verify 'Tribal Inquiry & Collaboration Record Created/ Updated Successfully!' toast message
+    And i wait for 7 seconds
+    #####  +ERR Doc  #################
+    And i generate ERR document
+    And i wait for 7 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    #######  Supervisor Review/Promotion  #################
+    And i scroll to down by 200 pixels
+    And i wait for 2 seconds
+    And i set page to view screening
+    And i wait for 5 seconds
+    And i enter and select 'Hotline Supervisor ContraCosta' value from property file in Approval Supervisor searchbox
+    And i click 'Save and Proceed' button
+    And i verify 'Record(s) saved successfully' toast message
+    And i wait for 5 seconds
+    ################  Validate screening person - 1  #################
+    And i scroll to down by 300 pixels
+    And i click on 'Screening Persons' Partial link
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i capture record number 1 of Screening Person column from related Screening Persons table of Screening Persons page
+    And i click saved record of Screening Person column from Screening Persons page
+    And i refresh the page
+    And i wait for 5 seconds
+    And i click 'Validate Person' button
+    And i wait for 5 seconds
+    And i click 'Search' button
+    And i wait for 5 seconds
+    And i click 'New Person' button
+    And i wait for 5 seconds
+    And i select 'Male' value in Sex at Birth dropdown
+    And i click 'Save' button
+    And i wait for 3 seconds
+    And i verify 'Screening Person record has been attached' toast message
+    ################  Validate screening person - 2 ##################
+    And i wait for 5 seconds
+    Then i navigate to current screening using url
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i scroll to down by 400 pixels
+    And i click on 'Screening Persons' Partial link
+    And i wait for 5 seconds
+    And i capture record number 2 of Screening Person column from related Screening Persons table of Screening Persons page
+    And i click saved record of Screening Person column from Screening Persons page
+    And i refresh the page
+    And i wait for 5 seconds
+    And i click 'Validate Person' button
+    And i wait for 5 seconds
+    And i click 'Search' button
+    And i wait for 5 seconds
+    And i click 'New Person' button
+    And i wait for 5 seconds
+    And i select 'Male' value in Sex at Birth dropdown
+    And i click 'Save' button
+    And i wait for 3 seconds
+    And i verify 'Screening Person record has been attached' toast message
+    Then i navigate to current screening using url
+    And i wait for 5 seconds
+    ####### Submit For Approval  #################
+    And i click 'Submit For Approval' button
+    And i wait for 9 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i enter 'Submitting for approval' in Comments textarea
+    And i wait for 2 seconds
+    And i click 'Submit' button
+    And i wait for 5 seconds
+    And i verify 'Screening has been submitted for approval.' text is present on page
+    And i wait for 6 seconds
+    And i click 'Close' button
+    And i wait for 5 seconds
+    And i click on Log Out
+    And i wait for 5 seconds
+    ##############  Approval  #####################################
+    When i logged in as 'SupervisorContraCosta' for V1 application
+    And i wait for 10 seconds
+    Then i navigate to current screening using url
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i scroll to down by 400 pixels
+    And i wait for 5 seconds
+    And i click on 'Approval History' Partial link
+    And i wait for 5 seconds
+    And i verify 'Approve' text is present on page
+    Then i Approve the approval request
+    And i wait for 5 seconds
+    And i click on Log Out
+    And i wait for 5 seconds
+    #########################  Assignment  ###################################
+    When i logged in as 'StaffContraCosta' for V1 application
+    And i wait for 10 seconds
+    And i navigate to Screenings page
+    And i wait for 5 seconds
+    And i select Approved Screenings list view on screenings page
+    And i wait for 5 seconds
+    And i search SCR ID in list view
+    And i wait for 5 seconds
+    And i click first record of Approved Screenings list view of screenings tab
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 7 seconds
+    And i verify 'Primary Worker' searchbox is present on page
+    And i enter and select <PrimaryWorker> value from property file in Primary Worker searchbox
+    And i wait for 2 seconds
+    And i click 'Save' button
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i set page to view screening
+    And i wait for 3 seconds
+    And i capture Folio ref from view screening page
+    And i capture Folio ref url from view screening page
+    And i wait for 5 seconds
+    And i click on Log Out
+    And i wait for 5 seconds
+    #######################  Logging in as ER User  #################
+    Given Application is in Login Page
+    When i logged in as <Owner> for V1 application
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i wait for 5 seconds
+    And i click on 'Persons' Partial link
+    And i wait for 5 seconds
+    And i capture record number 1 of Folio Person column from related Persons table of Persons page
+    And i click saved record of Folio Person column from Persons page
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    #########################################################################################
+    And i click 'Documents' link
+    And i wait for 5 seconds
+    And i click 'Upload' button
+    And i wait for 5 seconds
+    And i select 'Government Issued Identification' value in Document Category dropdown
+    And i wait for 5 seconds
+    And i select 'Birth Certificate' value in Document Type dropdown
+    And i wait for 5 seconds
+    And i select 'Final' value in Document Status dropdown
+    And i wait for 5 seconds
+    And i uploaded the file with name 'testFile.pdf'
+    And i wait for 5 seconds
+    And i set page to view contact log
+    And i click 'show actions' element
+    And i wait for 5 seconds
+    And i verify 'View' text is present on page
+    And i verify 'Update Status' text is present on page
+    And i verify 'Delete' text is present on page
+    And i verify 'Download' text is present on page
+    And i verify 'Upload New Version' text is present on page
+    And i verify 'Print' text is present on page
+    And i verify 'Rename Document' text is present on page
+    And i wait for 5 seconds
+    And i click on Log Out
+    And i wait for 5 seconds
+    #######################  Logging in as Direct Supervisor  #################
+    Given Application is in Login Page
+    When i logged in as <DirectSupervisor> for V1 application
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i wait for 5 seconds
+    And i click on 'Persons' Partial link
+    And i wait for 5 seconds
+    And i capture record number 2 of Folio Person column from related Persons table of Persons page
+    And i click saved record of Folio Person column from Persons page
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    #########################################################################################
+    And i click 'Documents' link
+    And i wait for 5 seconds
+    And i click 'Upload' button
+    And i wait for 5 seconds
+    And i select 'Government Issued Identification' value in Document Category dropdown
+    And i wait for 5 seconds
+    And i select 'Birth Certificate' value in Document Type dropdown
+    And i wait for 5 seconds
+    And i select 'Final' value in Document Status dropdown
+    And i wait for 5 seconds
+    And i uploaded the file with name 'testFile.pdf'
+    And i wait for 5 seconds
+    And i set page to view contact log
+    And i click 'show actions' element
+    And i wait for 5 seconds
+    And i verify 'View' text is present on page
+    And i verify 'Update Status' text is present on page
+    And i verify 'Download' text is present on page
+    And i verify 'Upload New Version' text is present on page
+    And i verify 'Print' text is present on page
+    And i verify 'Rename Document' text is present on page
+    And i wait for 5 seconds
+    And i click on Log Out
+    And i wait for 5 seconds
+    #######################  Logging in as Same Persona Non Owner  #################
+    Given Application is in Login Page
+    When i logged in as <SamePersonaNonOwner> for V1 application
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i wait for 5 seconds
+    And i click on 'Persons' Partial link
+    And i wait for 5 seconds
+    And i capture record number 1 of Folio Person column from related Persons table of Persons page
+    And i click saved record of Folio Person column from Persons page
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    #########################################################################################
+    And i click 'Documents' link
+    And i wait for 5 seconds
+    And i click 'Upload' button
+    And i wait for 5 seconds
+    And i select 'Government Issued Identification' value in Document Category dropdown
+    And i wait for 5 seconds
+    And i select 'Birth Certificate' value in Document Type dropdown
+    And i wait for 5 seconds
+    And i select 'Final' value in Document Status dropdown
+    And i wait for 5 seconds
+    And i uploaded the file with name 'testFile.pdf'
+    And i wait for 5 seconds
+    And i set page to view contact log
+    And i click 'show actions' element
+    And i wait for 5 seconds
+    And i verify 'View' text is present on page
+    And i verify 'Update Status' text is present on page
+    And i verify 'Download' text is present on page
+    And i verify 'Upload New Version' text is present on page
+    And i verify 'Print' text is present on page
+    And i verify 'Rename Document' text is present on page
+    And i wait for 5 seconds
+    And i click on Log Out
+    And i wait for 5 seconds
+    #######################  Logging in as Same Persona Different County  #################
+    Given Application is in Login Page
+    When i logged in as <SamePersonaDifferentCounty> for V1 application
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    Then i verify 'Looks like there's a problem.' text is present on page
+    And i wait for 5 seconds
+    And i click on Log Out
+    And i wait for 5 seconds
+    #######################  Logging in as State Read Only  #################
+    Given Application is in Login Page
+    When i logged in as 'StateReadOnlyStaff' for V1 application
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i wait for 5 seconds
+    And i click on 'Persons' Partial link
+    And i wait for 5 seconds
+    And i capture record number 1 of Folio Person column from related Persons table of Persons page
+    And i click saved record of Folio Person column from Persons page
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    #########################################################################################
+    And i click 'Documents' link
+    And i wait for 5 seconds
+    And i set page to view contact log
+    And i click 'show actions' element
+    And i wait for 5 seconds
+    And i verify 'View' text is present on page
+    And i verify 'Download' text is present on page
+    And i verify 'Print' text is present on page
+    And i wait for 5 seconds
+
+    Examples: 
+      | Owner                     | SamePersonaNonOwner              | SamePersonaDifferentCounty | DirectSupervisor          | PrimaryWorker              |
+      | 'ERWorkerContraCosta'     | 'ERWorkerContraCostaUserTwo'     | 'ERWorkerFresno'           | 'ERSupervisorContraCosta' | 'erworker contracosta'     |
+      | 'ERSupervisorContraCosta' | 'ERSupervisorContraCostaUserTwo' | 'ERSupervisorFresno'       | 'ERSupervisorContraCosta' | 'ersupervisor contracosta' |
+
+  @Test775_part2
+  Scenario Outline: CARESV1-T775_1342 part-2 Verify the Document permissions for Person Object for different profiles
+    Given Application is in Login Page
+    When i logged in as 'StaffContraCosta' for V1 application
+    And i wait for 5 seconds
+    And verify i am on Home page
+    And i wait for 5 seconds
+    And i navigate to Screenings page
+    And i wait for 5 seconds
+    And i click 'New' button
+    And i wait for 8 seconds
+    #####  Initial Screening Information  #################
+    And i enter 'TodayDate' in Date textbox
+    And i select 'Abuse/Neglect Referral' value in Reason for the Call dropdown
+    And i enter 'randomText' in Screening Name textbox
+    And i enter 'randomText' in Call Narrative for Div Paragraph Textbox in V1
+    And i select 'Non-Mandated Reporter' radiobutton
+    And i select 'No' value in Call Back Required dropdown
+    And i click 'Save and Proceed' button
+    And i wait for 5 seconds
+    And i set page to view screening
+    And i capture SCR ID from view screening page
+    And i capture screening url from view screening page
+    And i wait for 5 seconds
+    #####  Add Person(s)  #################
+    And i enter person 1 deatils with role as 'Alleged Perpetrator' in Screening
+    And i scroll to Down by 200 pixels
+    And i wait for 5 seconds
+    And i click '+ Add Row' button
+    And i wait for 5 seconds
+    And i scroll to Down by 200 pixels
+    And i enter person 2 deatils with role as 'Alleged Victim' in Screening
+    And i click 'Save and Proceed' button
+    And i wait for 5 seconds
+    ######  Add Addresss(es)  #################
+    And i scroll on page to Address Type dropdown
+    And i wait for 5 seconds
+    And i select 'Location of Child(ren)' value in Address Type dropdown
+    And i enter 'randomText' in Address Line 1 textbox
+    And i enter 'Oakland' in City textbox
+    And i enter '94763' in Zip Code textbox
+    And i click 'Search' button
+    And i wait for 5 seconds
+    And i click 'Validate Address' button
+    And i wait for 5 seconds
+    And i select 'userEnteredAddress' radiobutton
+    And i wait for 5 seconds
+    And i click 'Save and Proceed' button
+    And i wait for 5 seconds
+    And i scroll to Up by 600 pixels
+    And i set page to view screening
+    And i wait for 5 seconds
+    ###### Add Allegation(s) #################
+    And i verify 'Allegation Type' text is present on page
+    And i verify 'Allegations Subtype' text is present on page
+    And i select stored 'Alleged Victim' value from constant file in Select Alleged Victim dropdown
+    And i select stored 'Alleged Perpetrator' value from constant file in Select Alleged Perpetrator dropdown
+    And i select 'Caretaker Absence/Incapacity' value in Allegation Type dropdown
+    And i wait for 2 seconds
+    And i move Abandonment,Parent Deceased, values from Allegations Subtype available list to chosen list
+    And i click 'Save and Proceed' button
+    And i wait for 5 seconds
+    ####  Identify Safety Alert(s)  #################
+    And i click 'Save and Proceed' button
+    And i wait for 10 seconds
+    And i refresh the page
+    And i wait for 9 seconds
+    ##### SDM Hotline Tool  #################
+    And i select 'Immediate' value in Response Type dropdown
+    And i wait for 7 seconds
+    And i click 'Save and Proceed' button
+    And i wait for 10 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    ######## Tribal Inquiry & Collaboration  #################
+    And i click 'Tribal Inquiry & Collaboration' link
+    And i wait for 5 seconds
+    And i scroll to Down by 200 pixels
+    And i enter 'TodayDate' in Date textbox
+    And i enter '12:00 AM' in Time textbox
+    And i select 'Reporting Party' value in Participant Type dropdown
+    And i enter and select 'Alleged Victim' value in On Behalf of Child searchbox
+    And i select 'In-Person' value in Method dropdown
+    And i select 'Tribal Inquiry' value in Contact Purpose dropdown
+    And i select 'Completed' value in Contact Status dropdown
+    And i enter and select 'Hotline Staff ContraCosta' value from property file in Staff Person searchbox
+    And i scroll to Down by 100 pixels
+    And i select 'Continue to Inquire' value in Initial ICWA Inquiry dropdown
+    And i scroll to Down by 100 pixels
+    And i select 'Home' value in Location dropdown
+    And i wait for 5 seconds
+    And i click 'Save and Proceed' button
+    And i wait for 5 seconds
+    And i verify 'Tribal Inquiry & Collaboration Record Created/ Updated Successfully!' toast message
+    And i wait for 7 seconds
+    #####  +ERR Doc  #################
+    And i generate ERR document
+    And i wait for 7 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    #######  Supervisor Review/Promotion  #################
+    And i scroll to down by 200 pixels
+    And i wait for 2 seconds
+    And i set page to view screening
+    And i wait for 5 seconds
+    And i enter and select 'Hotline Supervisor ContraCosta' value from property file in Approval Supervisor searchbox
+    And i click 'Save and Proceed' button
+    And i verify 'Record(s) saved successfully' toast message
+    And i wait for 5 seconds
+    ################  Validate screening person - 1  #################
+    And i scroll to down by 300 pixels
+    And i click on 'Screening Persons' Partial link
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i capture record number 1 of Screening Person column from related Screening Persons table of Screening Persons page
+    And i click saved record of Screening Person column from Screening Persons page
+    And i refresh the page
+    And i wait for 5 seconds
+    And i click 'Validate Person' button
+    And i wait for 5 seconds
+    And i click 'Search' button
+    And i wait for 5 seconds
+    And i click 'New Person' button
+    And i wait for 5 seconds
+    And i select 'Male' value in Sex at Birth dropdown
+    And i click 'Save' button
+    And i wait for 3 seconds
+    And i verify 'Screening Person record has been attached' toast message
+    ################  Validate screening person - 2 ##################
+    And i wait for 5 seconds
+    Then i navigate to current screening using url
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i scroll to down by 400 pixels
+    And i click on 'Screening Persons' Partial link
+    And i wait for 5 seconds
+    And i capture record number 2 of Screening Person column from related Screening Persons table of Screening Persons page
+    And i click saved record of Screening Person column from Screening Persons page
+    And i refresh the page
+    And i wait for 5 seconds
+    And i click 'Validate Person' button
+    And i wait for 5 seconds
+    And i click 'Search' button
+    And i wait for 5 seconds
+    And i click 'New Person' button
+    And i wait for 5 seconds
+    And i select 'Male' value in Sex at Birth dropdown
+    And i click 'Save' button
+    And i wait for 3 seconds
+    And i verify 'Screening Person record has been attached' toast message
+    Then i navigate to current screening using url
+    And i wait for 5 seconds
+    ####### Submit For Approval  #################
+    And i click 'Submit For Approval' button
+    And i wait for 9 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i enter 'Submitting for approval' in Comments textarea
+    And i wait for 2 seconds
+    And i click 'Submit' button
+    And i wait for 5 seconds
+    And i verify 'Screening has been submitted for approval.' text is present on page
+    And i wait for 6 seconds
+    And i click 'Close' button
+    And i wait for 5 seconds
+    And i click on Log Out
+    And i wait for 5 seconds
+    ##############  Approval  #####################################
+    When i logged in as 'SupervisorContraCosta' for V1 application
+    And i wait for 10 seconds
+    Then i navigate to current screening using url
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i scroll to down by 400 pixels
+    And i wait for 5 seconds
+    And i click on 'Approval History' Partial link
+    And i wait for 5 seconds
+    And i verify 'Approve' text is present on page
+    Then i Approve the approval request
+    And i wait for 5 seconds
+    And i click on Log Out
+    And i wait for 5 seconds
+    #########################  Assignment  ###################################
+    When i logged in as 'StaffContraCosta' for V1 application
+    And i wait for 10 seconds
+    And i navigate to Screenings page
+    And i wait for 5 seconds
+    And i select Approved Screenings list view on screenings page
+    And i wait for 5 seconds
+    And i search SCR ID in list view
+    And i wait for 5 seconds
+    And i click first record of Approved Screenings list view of screenings tab
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 7 seconds
+    And i verify 'Primary Worker' searchbox is present on page
+    And i enter and select 'erworker contracosta' value from property file in Primary Worker searchbox
+    And i wait for 2 seconds
+    And i click 'Save' button
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    And i set page to view screening
+    And i wait for 3 seconds
+    And i capture Folio ref from view screening page
+    And i capture Folio ref url from view screening page
+    And i wait for 5 seconds
+    And i click on Log Out
+    And i wait for 5 seconds
+    
+    #######################  Logging in as ER User  #################
+    Given Application is in Login Page
+    When i logged in as 'ERWorkerContraCosta' for V1 application
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i wait for 5 seconds
+    And i click on 'Persons' Partial link
+    And i wait for 5 seconds
+    And i capture record number 1 of Folio Person column from related Persons table of Persons page
+    And i click saved record of Folio Person column from Persons page
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    #########################################################################################
+    And i click 'Documents' link
+    And i wait for 5 seconds
+    And i click 'Upload' button
+    And i wait for 5 seconds
+    And i select 'Government Issued Identification' value in Document Category dropdown
+    And i wait for 5 seconds
+    And i select 'Birth Certificate' value in Document Type dropdown
+    And i wait for 5 seconds
+    And i select 'Final' value in Document Status dropdown
+    And i wait for 5 seconds
+    And i uploaded the file with name 'testFile.pdf'
+    And i wait for 5 seconds
+    And i set page to view contact log
+    And i click 'show actions' element
+    And i wait for 5 seconds
+    And i verify 'View' text is present on page
+    And i verify 'Update Status' text is present on page
+    And i verify 'Delete' text is present on page
+    And i verify 'Download' text is present on page
+    And i verify 'Upload New Version' text is present on page
+    And i verify 'Print' text is present on page
+    And i verify 'Rename Document' text is present on page
+    And i wait for 5 seconds
+    And i click on Log Out
+    And i wait for 5 seconds
+    #######################  Logging in as Hotline User  #################
+    Given Application is in Login Page
+    When i logged in as <Owner> for V1 application
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i wait for 5 seconds
+    And i click on 'Persons' Partial link
+    And i wait for 5 seconds
+    And i capture record number 1 of Folio Person column from related Persons table of Persons page
+    And i click saved record of Folio Person column from Persons page
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    #########################################################################################
+   And i click 'Documents' link
+    And i wait for 5 seconds
+    And i set page to view contact log
+    And i click 'show actions' element
+    And i wait for 5 seconds
+    And i verify 'View' text is present on page
+    And i verify 'Download' text is present on page
+    And i verify 'Print' text is present on page
+    And i wait for 5 seconds
+    And i click on Log Out
+    And i wait for 5 seconds
+    #######################  Logging in as Direct Supervisor  #################
+    Given Application is in Login Page
+    When i logged in as <DirectSupervisor> for V1 application
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i wait for 5 seconds
+    And i click on 'Persons' Partial link
+    And i wait for 5 seconds
+    And i capture record number 1 of Folio Person column from related Persons table of Persons page
+    And i click saved record of Folio Person column from Persons page
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    #########################################################################################
+   And i click 'Documents' link
+    And i wait for 5 seconds
+    And i set page to view contact log
+    And i click 'show actions' element
+    And i wait for 5 seconds
+    And i verify 'View' text is present on page
+    And i verify 'Download' text is present on page
+    And i verify 'Print' text is present on page
+    And i wait for 5 seconds
+    And i click on Log Out
+    And i wait for 5 seconds
+    #######################  Logging in as Same Persona Non Owner  #################
+    Given Application is in Login Page
+    When i logged in as <SamePersonaNonOwner> for V1 application
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i wait for 5 seconds
+    And i click on 'Persons' Partial link
+    And i wait for 5 seconds
+    And i capture record number 1 of Folio Person column from related Persons table of Persons page
+    And i click saved record of Folio Person column from Persons page
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    #########################################################################################
+      And i click 'Documents' link
+    And i wait for 5 seconds
+    And i set page to view contact log
+    And i click 'show actions' element
+    And i wait for 5 seconds
+    And i verify 'View' text is present on page
+    And i verify 'Download' text is present on page
+    And i verify 'Print' text is present on page
+    And i wait for 5 seconds
+    And i click on Log Out
+    And i wait for 5 seconds
+    #######################  Logging in as Same Persona Different County  #################
+    Given Application is in Login Page
+    When i logged in as <SamePersonaDifferentCounty> for V1 application
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    Then i verify 'Looks like there's a problem.' text is present on page
+    And i wait for 5 seconds
+    And i click on Log Out
+    And i wait for 5 seconds
+    #######################  Logging in as State Read Only  #################
+    Given Application is in Login Page
+    When i logged in as 'StateReadOnlyStaff' for V1 application
+    And i wait for 5 seconds
+    Then i navigate to current folio using url
+    And i wait for 5 seconds
+    And i set page to view folio
+    And i wait for 5 seconds
+    And i click on 'Persons' Partial link
+    And i wait for 5 seconds
+    And i capture record number 1 of Folio Person column from related Persons table of Persons page
+    And i click saved record of Folio Person column from Persons page
+    And i wait for 5 seconds
+    And i refresh the page
+    And i wait for 5 seconds
+    #########################################################################################
+    And i click 'Documents' link
+    And i wait for 5 seconds
+    And i set page to view contact log
+    And i click 'show actions' element
+    And i wait for 5 seconds
+    And i verify 'View' text is present on page
+    And i verify 'Download' text is present on page
+    And i verify 'Print' text is present on page
+    And i wait for 5 seconds
+
+    Examples: 
+      | Owner                   | SamePersonaNonOwner            | SamePersonaDifferentCounty | DirectSupervisor        |
+      | 'StaffContraCosta'      | 'StaffContraCostaUserTwo'      | 'StaffFresno'              | 'SupervisorContraCosta' |
+      | 'SupervisorContraCosta' | 'SupervisorContraCostaUserTwo' | 'SupervisorFresno'         | 'SupervisorContraCosta' |
