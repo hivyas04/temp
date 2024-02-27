@@ -1,0 +1,54 @@
+Using JS script  - 
+
+@And("^(?:i|user) enter placementPhoneNumberJS$")
+		public void enter_text_phonenumbertextbox_js() {
+		
+			WebElement element = null;
+			String xpathString = "//input[@id=string(//span[text()='Placement Phone Number']/parent::label/@for)]";
+			wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(xpathString)));
+			element = driver.findElement(By.xpath(xpathString));
+			JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+			String phoneNumber = "8806688924";
+			jsExecutor.executeScript("argument[0].value='8806688924'",element);
+//			Commons.pressEnterSendKey(element, driver, "(999)");
+//			Commons.noClearSendKey(element, driver, "888");
+//			Commons.noClearSendKey(element, driver, "1234");
+			logger.info("user entering text "+ phoneNumber+ "in Placement Phone Number textbox.");
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+
+Method for Provider Options Record Creation -
+
+@And("i create Provider Options record from subtab$")
+	public void i_create_Provider_Options_record() throws Exception {
+		
+		String placementName = commons.getRandomAlphabet(8);
+		String placementPerson = commons.getRandomAlphabet(8);
+		commonSteps.click_element("+ Manually Add Placement Option","button");
+		commonSteps.select_value_in_dropdown("Supervised Independent Living Placement","Placement Type");
+		commonSteps.select_value_in_dropdown("Accepted","Placement Option Determination Status");
+		commonSteps.enter_text(placementName,"Placement Name","textbox");
+		commonSteps.enter_text(placementPerson,"Placement Name","textbox");
+		commonSteps.enter_text("(222)789-1919","Placement Phone Number","textbox");
+		commonSteps.enter_text(commons.getRandomAlphabet(8),"Address Line 1","textbox");
+		commonSteps.enter_text(commons.getRandomAlphabet(6),"City","textbox");
+		commonSteps.select_value_in_dropdown("AK","State");
+		commonSteps.enter_text(commons.getRandomNumber(6),"Zip Code","textbox");
+		commonSteps.select_value_in_dropdown("Alameda","County");
+		commonSteps.enter_text(commons.getRandomNumber(3),"Available Capacity","textbox");
+		commonSteps.click_element("Next","button");
+		commonSteps.wait_for("1");
+		commonSteps.click_element("Independent Living","checkbox");
+		commonSteps.click_element("Next","button");
+		commonSteps.wait_for("1");
+		commonSteps.click_element("Complete","button");
+	    
+	    Commons.hardWaitInSecond(2);
+	    
+	}
