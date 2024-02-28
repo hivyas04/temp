@@ -52,3 +52,21 @@ Method for Provider Options Record Creation -
 	    Commons.hardWaitInSecond(2);
 	    
 	}
+
+
+
+
+@And("^(?:i|user) enter '(.*)' in Placement Phone Number Textbox on Provider Options$")
+public void enterPlacementPhoneNumberTextboxOnProviderOptions(String textToEnter) {
+
+              WebElement textBox = driver.findElement(By.xpath("(//input[@type='tel']//parent::div//parent::div//parent::c-masked-input//parent::slot//parent::omnistudio-omniscript-telephone[@data-omni-key='PlacementPhoneNumber'])"));
+
+              if (textToEnter.equalsIgnoreCase("tenDigitsRandomNumber")) {
+                             textToEnter = Commons.getRandomNumber(10);
+                             }
+              textBox.click();
+              textBox.sendKeys(textToEnter);
+}
+
+step definition :  And i enter 'tenDigitsRandomNumber' in Placement Phone Number Textbox on Provider Options
+
